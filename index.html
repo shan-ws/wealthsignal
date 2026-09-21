@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wealth Signal | Financial Education & Market Simulation Platform (India)</title>
+  <meta name="description" content="India's premier dark-mode financial education and market simulation platform. Learn NSE/BSE stocks, derivatives, and commodities with ₹10,00,000 virtual demo money without risking real money." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+
+  <!-- Regulatory & Educational Disclaimer Top Banner -->
+  <div class="regulatory-banner">
+    <div class="regulatory-banner-content">
+      <span class="regulatory-badge">SEBI / RBI EDUCATIONAL NOTICE</span>
+      <span>
+        Educational & Simulation Platform only. Does not provide personalized investment advice or guaranteed returns, and does not execute real-money trades.
+      </span>
+    </div>
+    <div style="font-weight: 600; color: var(--emerald); font-size: 11px;">
+      100% Risk-Free Virtual Capital
+    </div>
+  </div>
+
+  <!-- Live Scrolling Market Ticker Tape -->
+  <div class="market-ticker-tape">
+    <div class="ticker-track" id="market-ticker-track">
+      <!-- Injected dynamically by app.js -->
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <nav class="main-nav">
+    <div class="brand-section" onclick="window.ArthashalaApp.navigate('home')">
+      <img src="assets/logo.jpg" alt="Wealth Signal Logo" class="brand-logo-img" />
+      <div class="brand-text-group">
+        <span class="brand-name">
+          WEALTH SIGNAL
+          <span class="nav-link-badge" id="header-pro-badge" style="display: none;">PRO</span>
+        </span>
+        <span class="brand-tagline-micro">Don’t just follow the market. Learn how it works.</span>
+      </div>
+    </div>
+
+    <!-- 13 Navigation Links -->
+    <ul class="nav-links">
+      <li><a class="nav-link active" data-route="home" onclick="window.ArthashalaApp.navigate('home')">Home</a></li>
+      <li><a class="nav-link" data-route="markets" onclick="window.ArthashalaApp.navigate('markets')">Markets</a></li>
+      <li><a class="nav-link" data-route="simulator" onclick="window.ArthashalaApp.navigate('simulator')">Simulator</a></li>
+      <li><a class="nav-link" data-route="portfolio" onclick="window.ArthashalaApp.navigate('portfolio')">Portfolio</a></li>
+      <li><a class="nav-link" data-route="journal" onclick="window.ArthashalaApp.navigate('journal')">Journal</a></li>
+      <li><a class="nav-link" data-route="backtesting" onclick="window.ArthashalaApp.navigate('backtesting')">Backtesting</a></li>
+      <li><a class="nav-link" data-route="education" onclick="window.ArthashalaApp.navigate('education')">Education</a></li>
+      <li><a class="nav-link" data-route="finance-ai" onclick="window.ArthashalaApp.navigate('finance-ai')">Finance AI</a></li>
+      <li><a class="nav-link" data-route="risk-tools" onclick="window.ArthashalaApp.navigate('risk-tools')">Risk Tools</a></li>
+      <li><a class="nav-link" data-route="pricing" onclick="window.ArthashalaApp.navigate('pricing')">Pricing</a></li>
+      <li><a class="nav-link" data-route="profile" onclick="window.ArthashalaApp.navigate('profile')">Profile</a></li>
+      <li><a class="nav-link" data-route="admin" onclick="window.ArthashalaApp.navigate('admin')">Admin</a></li>
+      <li><a class="nav-link" data-route="auth" id="nav-link-auth" onclick="window.ArthashalaApp.navigate('auth')">Sign In</a></li>
+    </ul>
+
+    <!-- Header Actions (Virtual Balance, Streak, XP, Upgrade & Auth) -->
+    <div class="nav-actions">
+      <div class="virtual-balance-chip" onclick="window.ArthashalaApp.navigate('simulator')" title="Virtual Demo Capital (₹10,00,000)">
+        <span class="balance-label">Demo Cash:</span>
+        <span class="balance-amount" id="header-virtual-balance">₹10,00,000</span>
+      </div>
+
+      <div class="user-status-pill">
+        <span class="streak-indicator" id="header-streak-val" title="Active Learning Streak">5d 🔥</span>
+        <span style="color: var(--border-subtle);">|</span>
+        <span class="xp-indicator" id="header-xp-val" title="Gamification Experience Points">1450 XP</span>
+      </div>
+
+      <button class="btn btn-primary btn-sm btn-glow" onclick="window.ArthashalaComponents.checkout.openModal('1Y')">
+        ⭐ Upgrade
+      </button>
+
+      <!-- Dynamic User Auth Chip / Sign In Button -->
+      <div class="nav-auth-container" id="header-auth-container">
+        <!-- Injected dynamically by app.js -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main View Container for Routes -->
+  <main class="app-container">
+    <section class="route-view active" id="view-home"></section>
+    <section class="route-view" id="view-markets"></section>
+    <section class="route-view" id="view-simulator"></section>
+    <section class="route-view" id="view-portfolio"></section>
+    <section class="route-view" id="view-journal"></section>
+    <section class="route-view" id="view-backtesting"></section>
+    <section class="route-view" id="view-education"></section>
+    <section class="route-view" id="view-finance-ai"></section>
+    <section class="route-view" id="view-risk-tools"></section>
+    <section class="route-view" id="view-pricing"></section>
+    <section class="route-view" id="view-profile"></section>
+    <section class="route-view" id="view-admin"></section>
+    <section class="route-view" id="view-auth"></section>
+  </main>
+
+  <!-- Platform Footer -->
+  <footer style="background: var(--bg-surface); border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px; font-size: 12px; color: var(--text-muted);">
+    <div style="max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; margin-bottom: 30px;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <img src="assets/logo.jpg" alt="Wealth Signal Logo" style="width: 32px; height: 32px; border-radius: 6px; object-fit: cover; border: 1px solid rgba(255,255,255,0.15);" />
+          <strong style="color: #fff; font-size: 15px; letter-spacing: 0.5px;">WEALTH SIGNAL</strong>
+        </div>
+        <p style="line-height: 1.6; color: var(--text-secondary); margin-bottom: 12px;">
+          “Don’t just follow the market. Learn how it works.”
+        </p>
+        <p style="line-height: 1.5;">
+          India's leading financial market academy and paper trading ecosystem. Designed to teach Indian retail investors quantitative risk management, technical chart patterns, and fundamental analysis before risking hard-earned capital.
+        </p>
+      </div>
+
+      <div>
+        <strong style="color: #fff; font-size: 13px; display: block; margin-bottom: 12px;">Platform Modules</strong>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
+          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('simulator')" style="color: var(--text-secondary); text-decoration: none;">Pro Virtual Simulator</a></li>
+          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('markets')" style="color: var(--text-secondary); text-decoration: none;">Live Market Screener</a></li>
+          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('portfolio')" style="color: var(--text-secondary); text-decoration: none;">Sharpe Portfolio Analytics</a></li>
+          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('backtesting')" style="color: var(--text-secondary); text-decoration: none;">Algorithmic Backtester</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <strong style="color: #fff; font-size: 13px; display: block; margin-bottom: 12px;">Knowledge & Research</strong>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
+          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('education')" style="color: var(--text-secondary); text-decoration: none;">6 Structured Academy Tracks</a></li>
+          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('finance-ai')" style="color: var(--text-secondary); text-decoration: none;">Finance AI Tutor (SEBI/RBI Citations)</a></li>
+          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('risk-tools')" style="color: var(--text-secondary); text-decoration: none;">F&O & Position Sizing Tools</a></li>
+          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('journal')" style="color: var(--text-secondary); text-decoration: none;">Psychological Trading Journal</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <strong style="color: #fff; font-size: 13px; display: block; margin-bottom: 12px;">Regulatory Disclaimer</strong>
+        <p style="line-height: 1.6;">
+          Wealth Signal is an educational and market simulation platform developed strictly for learning financial concepts. It does not provide personalized investment advice, guaranteed returns, or execute real-money trades. Simulated profits do not guarantee real-world success. Refer to official circulars on <a href="https://www.sebi.gov.in" target="_blank" style="color: var(--cyan);">sebi.gov.in</a> and <a href="https://www.rbi.org.in" target="_blank" style="color: var(--cyan);">rbi.org.in</a>.
+        </p>
+      </div>
+    </div>
+
+    <div style="border-top: 1px solid var(--border-subtle); padding-top: 20px; text-align: center; color: var(--text-muted);">
+      © 2026 Wealth Signal. All rights reserved. Built with precision for Indian financial learners.
+    </div>
+  </footer>
+
+  <!-- Scripts: Data, Services, Components & App Controller -->
+  <script src="https://s3.tradingview.com/tv.js"></script>
+  <script src="js/data/markets.js"></script>
+  <script src="js/data/academy.js"></script>
+  <script src="js/data/ai_knowledge.js"></script>
+  <script src="js/services/market_feed.js"></script>
+  <script src="js/services/gamification.js"></script>
+  <script src="js/services/simulator.js"></script>
+  <script src="js/services/portfolio.js"></script>
+  <script src="js/services/journal.js"></script>
+  <script src="js/services/backtest.js"></script>
+  <script src="js/services/ai_tutor.js"></script>
+  <!-- Firebase SDK (v10 compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="js/services/firebase_config.js"></script>
+  <script src="js/services/auth.js"></script>
+  <script src="js/components/chart.js"></script>
+  <script src="js/components/tradingview_chart.js"></script>
+  <script src="js/components/checkout.js"></script>
+  <script src="js/components/auth_modal.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
