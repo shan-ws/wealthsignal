@@ -57,23 +57,28 @@ window.ArthashalaServices = window.ArthashalaServices || {};
   } catch(e) {
     registeredUsers = [];
   }
-  if (!Array.isArray(registeredUsers) || registeredUsers.length === 0) {
-    registeredUsers = DEFAULT_USERS;
-    localStorage.setItem(STORAGE_KEY_USERS, JSON.stringify(registeredUsers));
+  if (!Array.isArray(registeredUsers)) {
+    registeredUsers = [];
   }
 
-  // Active session
+  // Active session - starts as null (Logged Out) by default
   let currentSession = null;
   try {
     const saved = localStorage.getItem(STORAGE_KEY_SESSION);
     if (saved) {
-      currentSession = JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      // Clean up legacy mock sessions so visitors start logged out
+      if (parsed && !["usr_google_arjun", "usr_phone_priya", "usr_email_rohit"].includes(parsed.id)) {
+        currentSession = parsed;
+      } else {
+        localStorage.removeItem(STORAGE_KEY_SESSION);
+        currentSession = null;
+      }
     } else {
-      currentSession = DEFAULT_USERS[0];
-      localStorage.setItem(STORAGE_KEY_SESSION, JSON.stringify(currentSession));
+      currentSession = null;
     }
   } catch (e) {
-    currentSession = DEFAULT_USERS[0];
+    currentSession = null;
   }
 
   // Pending OTP verification state

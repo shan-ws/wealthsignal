@@ -235,25 +235,6 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
           </div>
         ` : ''}
 
-        <!-- Quick 1-Click Demo Profiles for Rapid Testing -->
-        <div class="auth-demo-pill-section">
-          <div class="demo-section-title">⚡ Instant 1-Click Demo Sign-In</div>
-          <div class="demo-pills-row">
-            <button class="demo-login-chip" onclick="window.ArthashalaComponents.auth.quickLogin('usr_google_arjun', ${isDedicatedPage})" title="Sign in as Arjun Singhania (Google Pro)">
-              <span class="chip-avatar">🇮🇳</span>
-              <span class="chip-label">Arjun Singhania (Google Pro)</span>
-            </button>
-            <button class="demo-login-chip" onclick="window.ArthashalaComponents.auth.quickLogin('usr_phone_priya', ${isDedicatedPage})" title="Sign in as Priya Sharma (Phone Verified)">
-              <span class="chip-avatar">📱</span>
-              <span class="chip-label">Priya (+91 Phone)</span>
-            </button>
-            <button class="demo-login-chip" onclick="window.ArthashalaComponents.auth.quickLogin('usr_email_rohit', ${isDedicatedPage})" title="Sign in as Rohit Mehta (Email)">
-              <span class="chip-avatar">✉️</span>
-              <span class="chip-label">Rohit (Email Trader)</span>
-            </button>
-          </div>
-        </div>
-
         <!-- Security & SEBI Educational Micro Footer -->
         <div class="auth-footer-notice">
           🔒 256-bit encrypted simulated environment. No real funds or broker credentials required.
@@ -559,10 +540,14 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
             if (err.code === "auth/popup-closed-by-user") {
               return;
             }
-            renderGoogleChooserModal(isDedicatedPage);
+            if (err.code === "auth/unauthorized-domain") {
+              this.showAlert("Domain not authorized in Firebase! Please add your Vercel domain in Firebase Console > Authentication > Settings > Authorized Domains.", false);
+              return;
+            }
+            this.showAlert(err.message || "Failed to sign in with Google", false);
           });
       } else {
-        renderGoogleChooserModal(isDedicatedPage);
+        this.showAlert("Firebase Authentication is not ready. Please refresh or check connection.", false);
       }
     },
 
