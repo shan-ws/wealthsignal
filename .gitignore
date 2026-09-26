@@ -20,6 +20,10 @@ yarn-error.log*
 *.pem
 *.key
 
+# Vercel & Deployments
+.vercel
+.vercel/
+
 # Temporary & Log files
 *.log
 scratch/
