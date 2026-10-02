@@ -85,7 +85,7 @@
 .chart-container-wrap {
   position: relative;
   width: 100%;
-  height: 440px;
+  height: clamp(300px, 45vh, 480px);
   background: #090d15;
   border-radius: var(--radius-sm);
   overflow: hidden;
@@ -1186,7 +1186,7 @@ input:checked + .toggle-slider:before {
 
 .tv-chart-host-box {
   width: 100%;
-  height: 520px;
+  height: clamp(320px, 48vh, 540px);
   border-radius: var(--radius-md);
   overflow: hidden;
   background: #0b0f19;
@@ -2062,5 +2062,195 @@ input:checked + .toggle-slider:before {
 .menu-item-link.danger:hover {
   background: rgba(244, 63, 94, 0.1);
 }
+
+/* ==========================================================================
+   Comprehensive Screen-Fit & Responsive Module Layouts
+   ========================================================================== */
+
+/* Home Market Movers Grid */
+.home-market-movers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 860px) {
+  .home-market-movers-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+}
+
+/* Portfolio Layout Grid */
+.portfolio-main-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 900px) {
+  .portfolio-main-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+}
+
+/* Profile Layout Grid */
+.profile-layout-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 860px) {
+  .profile-layout-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+}
+
+/* Risk Tools Grid */
+.risk-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 680px) {
+  .risk-tools-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Checkout & Payment Modal Responsive Tuning */
+@media (max-width: 600px) {
+  .modal-card {
+    padding: 18px 16px;
+    border-radius: 20px 20px 0 0;
+    max-height: 88vh;
+    position: fixed;
+    bottom: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .checkout-plan-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .upi-tab-layout {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 14px;
+  }
+
+  .upi-info-col {
+    width: 100%;
+  }
+
+  .payment-tab-nav {
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+
+  .payment-tab-btn {
+    padding: 8px 6px;
+    font-size: 11px;
+  }
+
+  .razorpay-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+  }
+}
+
+/* TradingView Fullscreen Modal on Mobile */
+@media (max-width: 768px) {
+  .tradingview-modal-content {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100vh !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+  }
+
+  .tv-station-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .tv-quick-pills {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+  }
+}
+
+/* Simulator Order Ticket & Terminal on Mobile */
+@media (max-width: 768px) {
+  .chart-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .symbol-selector-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .chart-controls-group {
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .order-action-buttons {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .btn-buy, .btn-sell {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+/* AI Tutor Mobile Chat Layout */
+@media (max-width: 768px) {
+  .ai-chat-window {
+    height: calc(100vh - 220px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ai-messages-scroll {
+    padding: 14px;
+  }
+
+  .chat-bubble {
+    max-width: 95%;
+  }
+
+  .ai-input-bar {
+    padding: 10px;
+  }
+}
+
 
 

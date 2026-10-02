@@ -2,13 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <title>Wealth Signal | Financial Education & Market Simulation Platform (India)</title>
-  <meta name="description" content="India's premier dark-mode financial education and market simulation platform. Learn NSE/BSE stocks, derivatives, and commodities with ₹10,00,000 virtual demo money without risking real money." />
+  <meta name="description" content="India's premier financial education and market simulation platform. Learn NSE/BSE stocks, derivatives, and commodities with ₹10,00,000 virtual demo money without risking real money." />
+  <meta name="theme-color" content="#070a12" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="format-detection" content="telephone=no" />
   <meta name="google-site-verification" content="google550c18250680e3b5" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
+  <link rel="apple-touch-icon" href="assets/logo.jpg" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css" />
@@ -19,12 +29,12 @@
   <!-- Regulatory & Educational Disclaimer Top Banner -->
   <div class="regulatory-banner">
     <div class="regulatory-banner-content">
-      <span class="regulatory-badge">SEBI / RBI EDUCATIONAL NOTICE</span>
-      <span>
-        Educational & Simulation Platform only. Does not provide personalized investment advice or guaranteed returns, and does not execute real-money trades.
+      <span class="regulatory-badge">SEBI / RBI NOTICE</span>
+      <span class="regulatory-text">
+        Educational & Simulation Platform only. Does not provide personalized investment advice or execute real-money trades.
       </span>
     </div>
-    <div style="font-weight: 600; color: var(--emerald); font-size: 11px;">
+    <div class="regulatory-sub-badge">
       100% Risk-Free Virtual Capital
     </div>
   </div>
@@ -45,41 +55,90 @@
           WEALTH SIGNAL
           <span class="nav-link-badge" id="header-pro-badge" style="display: none;">PRO</span>
         </span>
-        <span class="brand-tagline-micro">Don’t just follow the market. Learn how it works.</span>
+        <span class="brand-tagline-micro">Professional Market Lab</span>
       </div>
     </div>
 
-    <!-- 13 Navigation Links -->
-    <ul class="nav-links">
+    <!-- Desktop Navigation Links (Clean primary bar with 'More' dropdown for secondary tools) -->
+    <ul class="nav-links desktop-nav-links">
       <li><a class="nav-link active" data-route="home" onclick="window.ArthashalaApp.navigate('home')">Home</a></li>
       <li><a class="nav-link" data-route="markets" onclick="window.ArthashalaApp.navigate('markets')">Markets</a></li>
       <li><a class="nav-link" data-route="simulator" onclick="window.ArthashalaApp.navigate('simulator')">Simulator</a></li>
       <li><a class="nav-link" data-route="portfolio" onclick="window.ArthashalaApp.navigate('portfolio')">Portfolio</a></li>
-      <li><a class="nav-link" data-route="journal" onclick="window.ArthashalaApp.navigate('journal')">Journal</a></li>
-      <li><a class="nav-link" data-route="backtesting" onclick="window.ArthashalaApp.navigate('backtesting')">Backtesting</a></li>
-      <li><a class="nav-link" data-route="education" onclick="window.ArthashalaApp.navigate('education')">Education</a></li>
-      <li><a class="nav-link" data-route="finance-ai" onclick="window.ArthashalaApp.navigate('finance-ai')">Finance AI</a></li>
-      <li><a class="nav-link" data-route="risk-tools" onclick="window.ArthashalaApp.navigate('risk-tools')">Risk Tools</a></li>
-      <li><a class="nav-link" data-route="pricing" onclick="window.ArthashalaApp.navigate('pricing')">Pricing</a></li>
-      <li><a class="nav-link" data-route="profile" onclick="window.ArthashalaApp.navigate('profile')">Profile</a></li>
-      <li><a class="nav-link" data-route="admin" onclick="window.ArthashalaApp.navigate('admin')">Admin</a></li>
-      <li><a class="nav-link" data-route="auth" id="nav-link-auth" onclick="window.ArthashalaApp.navigate('auth')">Sign In</a></li>
+      <li><a class="nav-link" data-route="education" onclick="window.ArthashalaApp.navigate('education')">Academy</a></li>
+      <li><a class="nav-link" data-route="finance-ai" onclick="window.ArthashalaApp.navigate('finance-ai')">AI Tutor</a></li>
+
+      <!-- Secondary Tools Dropdown -->
+      <li class="nav-dropdown-wrapper">
+        <button class="nav-dropdown-trigger" id="nav-dropdown-trigger-btn" onclick="window.ArthashalaApp.toggleNavMoreDropdown(event)">
+          <span>Tools & More</span>
+          <span class="dropdown-chevron-icon">▾</span>
+        </button>
+        <div class="nav-dropdown-menu" id="nav-more-dropdown-menu">
+          <div class="dropdown-group-title">ADVANCED QUANTITATIVE</div>
+          <a class="nav-dropdown-item nav-link" data-route="backtesting" onclick="window.ArthashalaApp.navigate('backtesting')">
+            <span class="dropdown-item-icon">🔬</span>
+            <div class="dropdown-item-info">
+              <span class="dropdown-item-name">Algorithmic Backtest</span>
+              <span class="dropdown-item-desc">Test EMA, RSI & Supertrend rules</span>
+            </div>
+          </a>
+          <a class="nav-dropdown-item nav-link" data-route="risk-tools" onclick="window.ArthashalaApp.navigate('risk-tools')">
+            <span class="dropdown-item-icon">🧮</span>
+            <div class="dropdown-item-info">
+              <span class="dropdown-item-name">Risk & Option Tools</span>
+              <span class="dropdown-item-desc">Position sizing & Black-Scholes</span>
+            </div>
+          </a>
+          <a class="nav-dropdown-item nav-link" data-route="journal" onclick="window.ArthashalaApp.navigate('journal')">
+            <span class="dropdown-item-icon">📝</span>
+            <div class="dropdown-item-info">
+              <span class="dropdown-item-name">Trading Journal</span>
+              <span class="dropdown-item-desc">Psychology & trade performance log</span>
+            </div>
+          </a>
+
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-group-title">ACCOUNT & PLATFORM</div>
+          <a class="nav-dropdown-item nav-link" data-route="pricing" onclick="window.ArthashalaApp.navigate('pricing')">
+            <span class="dropdown-item-icon">⭐</span>
+            <div class="dropdown-item-info">
+              <span class="dropdown-item-name">Pro Plans & Pricing</span>
+              <span class="dropdown-item-desc">Institutional tier unlock</span>
+            </div>
+          </a>
+          <a class="nav-dropdown-item nav-link" data-route="profile" onclick="window.ArthashalaApp.navigate('profile')">
+            <span class="dropdown-item-icon">👤</span>
+            <div class="dropdown-item-info">
+              <span class="dropdown-item-name">Profile & Badges</span>
+              <span class="dropdown-item-desc">Learning rank, XP & streak stats</span>
+            </div>
+          </a>
+          <a class="nav-dropdown-item nav-link" data-route="admin" onclick="window.ArthashalaApp.navigate('admin')">
+            <span class="dropdown-item-icon">🛡️</span>
+            <div class="dropdown-item-info">
+              <span class="dropdown-item-name">Platform Admin</span>
+              <span class="dropdown-item-desc">Regulatory compliance log</span>
+            </div>
+          </a>
+        </div>
+      </li>
     </ul>
 
-    <!-- Header Actions (Virtual Balance, Streak, XP, Upgrade & Auth) -->
+    <!-- Header Actions (Virtual Balance, Streak, XP, Upgrade, Auth, Mobile Menu Toggle) -->
     <div class="nav-actions">
       <div class="virtual-balance-chip" onclick="window.ArthashalaApp.navigate('simulator')" title="Virtual Demo Capital (₹10,00,000)">
-        <span class="balance-label">Demo Cash:</span>
+        <span class="balance-label">Cash:</span>
         <span class="balance-amount" id="header-virtual-balance">₹10,00,000</span>
       </div>
 
-      <div class="user-status-pill">
+      <div class="user-status-pill desktop-only">
         <span class="streak-indicator" id="header-streak-val" title="Active Learning Streak">5d 🔥</span>
         <span style="color: var(--border-subtle);">|</span>
         <span class="xp-indicator" id="header-xp-val" title="Gamification Experience Points">1450 XP</span>
       </div>
 
-      <button class="btn btn-primary btn-sm btn-glow" onclick="window.ArthashalaComponents.checkout.openModal('1Y')">
+      <button class="btn btn-primary btn-sm btn-glow desktop-only" onclick="window.ArthashalaComponents.checkout.openModal('1Y')">
         ⭐ Upgrade
       </button>
 
@@ -87,7 +146,175 @@
       <div class="nav-auth-container" id="header-auth-container">
         <!-- Injected dynamically by app.js -->
       </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-hamburger-btn" id="mobile-menu-toggle" onclick="window.ArthashalaApp.toggleMobileDrawer()" aria-label="Toggle navigation drawer">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
     </div>
+  </nav>
+
+  <!-- Mobile Slide-Over Navigation Drawer -->
+  <div class="mobile-drawer-overlay" id="mobile-drawer-overlay" onclick="window.ArthashalaApp.closeMobileDrawer()"></div>
+  <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <div class="brand-section" onclick="window.ArthashalaApp.navigate('home'); window.ArthashalaApp.closeMobileDrawer();">
+        <img src="assets/logo.jpg" alt="Wealth Signal Logo" class="brand-logo-img" />
+        <div class="brand-text-group">
+          <span class="brand-name">WEALTH SIGNAL</span>
+          <span class="brand-tagline-micro">Professional Market Lab</span>
+        </div>
+      </div>
+      <button class="mobile-drawer-close" onclick="window.ArthashalaApp.closeMobileDrawer()" aria-label="Close menu">✕</button>
+    </div>
+
+    <!-- Mobile Drawer User Summary Card -->
+    <div class="mobile-drawer-user-card">
+      <div class="drawer-stats-row">
+        <div class="drawer-stat-item">
+          <span class="drawer-stat-lbl">Virtual Capital</span>
+          <span class="drawer-stat-val text-emerald font-mono" id="drawer-virtual-balance">₹10,00,000</span>
+        </div>
+        <div class="drawer-stat-item">
+          <span class="drawer-stat-lbl">Streak & XP</span>
+          <span class="drawer-stat-val font-mono" id="drawer-streak-xp-val">5d 🔥 • 1450 XP</span>
+        </div>
+      </div>
+      <div class="drawer-cta-row">
+        <button class="btn btn-primary btn-sm btn-glow" style="flex: 1;" onclick="window.ArthashalaComponents.checkout.openModal('1Y'); window.ArthashalaApp.closeMobileDrawer();">
+          ⭐ Upgrade to Pro
+        </button>
+        <button class="btn btn-secondary btn-sm" id="drawer-auth-btn" onclick="window.ArthashalaComponents.auth.openModal('phone', 'signin'); window.ArthashalaApp.closeMobileDrawer();">
+          🔑 Sign In
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation Links -->
+    <div class="mobile-drawer-nav-list">
+      <div class="drawer-section-heading">TRADING & MARKETS</div>
+      <a class="drawer-nav-link nav-link" data-route="home" onclick="window.ArthashalaApp.navigate('home'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">🏠</span>
+        <div class="drawer-link-meta">
+          <span class="drawer-link-title">Home Dashboard</span>
+          <span class="drawer-link-sub">Market summary & top gainers/losers</span>
+        </div>
+      </a>
+      <a class="drawer-nav-link nav-link" data-route="markets" onclick="window.ArthashalaApp.navigate('markets'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">📊</span>
+        <div class="drawer-link-meta">
+          <span class="drawer-link-title">Live Markets</span>
+          <span class="drawer-link-sub">NSE/BSE Screener & TradingView</span>
+        </div>
+      </a>
+      <a class="drawer-nav-link nav-link" data-route="simulator" onclick="window.ArthashalaApp.navigate('simulator'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">⚡</span>
+        <div class="drawer-link-meta">
+          <span class="drawer-link-title">Virtual Simulator</span>
+          <span class="drawer-link-sub">Risk-free execution with ₹10L demo capital</span>
+        </div>
+      </a>
+      <a class="drawer-nav-link nav-link" data-route="portfolio" onclick="window.ArthashalaApp.navigate('portfolio'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">💼</span>
+        <div class="drawer-link-meta">
+          <span class="drawer-link-title">Portfolio Analytics</span>
+          <span class="drawer-link-sub">Holdings, P&L, Sharpe & Drawdown</span>
+        </div>
+      </a>
+
+      <div class="drawer-section-heading">INTELLIGENCE & RESEARCH</div>
+      <a class="drawer-nav-link nav-link" data-route="education" onclick="window.ArthashalaApp.navigate('education'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">📚</span>
+        <div class="drawer-link-meta">
+          <span class="drawer-link-title">Financial Academy</span>
+          <span class="drawer-link-sub">6 structured tracks & certifications</span>
+        </div>
+      </a>
+      <a class="drawer-nav-link nav-link" data-route="finance-ai" onclick="window.ArthashalaApp.navigate('finance-ai'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">🤖</span>
+        <div class="drawer-link-meta">
+          <span class="drawer-link-title">Finance AI Tutor</span>
+          <span class="drawer-link-sub">SEBI/RBI citations & answers</span>
+        </div>
+      </a>
+      <a class="drawer-nav-link nav-link" data-route="journal" onclick="window.ArthashalaApp.navigate('journal'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">📝</span>
+        <div class="drawer-link-meta">
+          <span class="drawer-link-title">Trading Journal</span>
+          <span class="drawer-link-sub">Psychology & discipline logs</span>
+        </div>
+      </a>
+
+      <div class="drawer-section-heading">QUANTITATIVE LAB</div>
+      <a class="drawer-nav-link nav-link" data-route="backtesting" onclick="window.ArthashalaApp.navigate('backtesting'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">🔬</span>
+        <div class="drawer-link-meta">
+          <span class="drawer-link-title">Algorithmic Backtest</span>
+          <span class="drawer-link-sub">EMA, RSI & Supertrend backtester</span>
+        </div>
+      </a>
+      <a class="drawer-nav-link nav-link" data-route="risk-tools" onclick="window.ArthashalaApp.navigate('risk-tools'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">🧮</span>
+        <div class="drawer-link-meta">
+          <span class="drawer-link-title">Risk & Option Tools</span>
+          <span class="drawer-link-sub">Position sizing & Black-Scholes</span>
+        </div>
+      </a>
+
+      <div class="drawer-section-heading">ACCOUNT & SETTINGS</div>
+      <a class="drawer-nav-link nav-link" data-route="pricing" onclick="window.ArthashalaApp.navigate('pricing'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">⭐</span>
+        <div class="drawer-link-meta">
+          <span class="drawer-link-title">Pro Plans & Pricing</span>
+          <span class="drawer-link-sub">Subscription tiers & benefits</span>
+        </div>
+      </a>
+      <a class="drawer-nav-link nav-link" data-route="profile" onclick="window.ArthashalaApp.navigate('profile'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">👤</span>
+        <div class="drawer-link-meta">
+          <span class="drawer-link-title">Profile & Badges</span>
+          <span class="drawer-link-sub">Achievements & rank status</span>
+        </div>
+      </a>
+      <a class="drawer-nav-link nav-link" data-route="admin" onclick="window.ArthashalaApp.navigate('admin'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">🛡️</span>
+        <div class="drawer-link-meta">
+          <span class="drawer-link-title">Platform Admin</span>
+          <span class="drawer-link-sub">Regulatory notices & compliance logs</span>
+        </div>
+      </a>
+      <a class="drawer-nav-link nav-link" data-route="auth" id="nav-link-auth" onclick="window.ArthashalaApp.navigate('auth'); window.ArthashalaApp.closeMobileDrawer();" style="display: none;">
+        <span>Sign In</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Mobile Bottom Navigation Dock (Native App Style) -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Quick Navigation">
+    <button class="bottom-nav-item nav-link active" data-route="home" onclick="window.ArthashalaApp.navigate('home')">
+      <span class="bottom-nav-icon">🏠</span>
+      <span class="bottom-nav-label">Home</span>
+    </button>
+    <button class="bottom-nav-item nav-link" data-route="markets" onclick="window.ArthashalaApp.navigate('markets')">
+      <span class="bottom-nav-icon">📊</span>
+      <span class="bottom-nav-label">Markets</span>
+    </button>
+    <button class="bottom-nav-item nav-link bottom-nav-action-center" data-route="simulator" onclick="window.ArthashalaApp.navigate('simulator')">
+      <div class="bottom-nav-action-circle">
+        <span class="bottom-nav-icon">⚡</span>
+      </div>
+      <span class="bottom-nav-label">Trade</span>
+    </button>
+    <button class="bottom-nav-item nav-link" data-route="portfolio" onclick="window.ArthashalaApp.navigate('portfolio')">
+      <span class="bottom-nav-icon">💼</span>
+      <span class="bottom-nav-label">Portfolio</span>
+    </button>
+    <button class="bottom-nav-item" id="bottom-nav-more-toggle" onclick="window.ArthashalaApp.toggleMobileDrawer()">
+      <span class="bottom-nav-icon">☰</span>
+      <span class="bottom-nav-label">Menu</span>
+    </button>
   </nav>
 
   <!-- Main View Container for Routes -->

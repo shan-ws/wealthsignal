@@ -47,11 +47,58 @@ window.ArthashalaApp = window.ArthashalaApp || {};
     return `${isNegative ? '-' : ''}₹${formatted}`;
   }
 
+  // --- Mobile Drawer & Nav Dropdown Controllers ---
+  function closeMobileDrawer() {
+    const drawer = document.getElementById("mobile-nav-drawer");
+    const overlay = document.getElementById("mobile-drawer-overlay");
+    const toggle = document.getElementById("mobile-menu-toggle");
+    if (drawer) drawer.classList.remove("open");
+    if (overlay) overlay.classList.remove("open");
+    if (toggle) toggle.classList.remove("active");
+  }
+
+  function openMobileDrawer() {
+    const drawer = document.getElementById("mobile-nav-drawer");
+    const overlay = document.getElementById("mobile-drawer-overlay");
+    const toggle = document.getElementById("mobile-menu-toggle");
+    if (drawer) drawer.classList.add("open");
+    if (overlay) overlay.classList.add("open");
+    if (toggle) toggle.classList.add("active");
+  }
+
+  function toggleMobileDrawer() {
+    const drawer = document.getElementById("mobile-nav-drawer");
+    if (drawer && drawer.classList.contains("open")) {
+      closeMobileDrawer();
+    } else {
+      openMobileDrawer();
+    }
+  }
+
+  function toggleNavMoreDropdown(event) {
+    if (event) event.stopPropagation();
+    const menu = document.getElementById("nav-more-dropdown-menu");
+    const wrapper = document.querySelector(".nav-dropdown-wrapper");
+    if (menu) menu.classList.toggle("open");
+    if (wrapper) wrapper.classList.toggle("open");
+  }
+
+  function closeNavMoreDropdown() {
+    const menu = document.getElementById("nav-more-dropdown-menu");
+    const wrapper = document.querySelector(".nav-dropdown-wrapper");
+    if (menu) menu.classList.remove("open");
+    if (wrapper) wrapper.classList.remove("open");
+  }
+
   // --- Router Navigation ---
   function navigate(route) {
     activeRoute = route;
     
-    // Update navigation link states
+    // Automatically close mobile drawer and dropdown on navigation
+    closeMobileDrawer();
+    closeNavMoreDropdown();
+
+    // Update navigation link states (desktop, dropdown, mobile drawer & mobile bottom nav)
     document.querySelectorAll(".nav-link").forEach(link => {
       if (link.dataset.route === route) {
         link.classList.add("active");
@@ -95,10 +142,31 @@ window.ArthashalaApp = window.ArthashalaApp || {};
 
   function renderHeaderAuth() {
     const authContainer = document.getElementById("header-auth-container");
+    const drawerAuthBtn = document.getElementById("drawer-auth-btn");
     const navLinkAuth = document.getElementById("nav-link-auth");
-    if (!authContainer || !window.ArthashalaServices.auth) return;
+    if (!window.ArthashalaServices.auth) return;
 
     const user = window.ArthashalaServices.auth.getUser();
+
+    if (drawerAuthBtn) {
+      if (user) {
+        drawerAuthBtn.innerHTML = `👤 ${user.name.split(" ")[0]}`;
+        drawerAuthBtn.onclick = () => {
+          navigate('profile');
+          closeMobileDrawer();
+        };
+      } else {
+        drawerAuthBtn.innerHTML = `🔑 Sign In`;
+        drawerAuthBtn.onclick = () => {
+          if (window.ArthashalaComponents.auth) {
+            window.ArthashalaComponents.auth.openModal('phone', 'signin');
+          }
+          closeMobileDrawer();
+        };
+      }
+    }
+
+    if (!authContainer) return;
 
     if (user) {
       if (navLinkAuth) navLinkAuth.innerText = "Account";
@@ -155,11 +223,17 @@ window.ArthashalaApp = window.ArthashalaApp || {};
     const balanceEl = document.getElementById("header-virtual-balance");
     if (balanceEl) balanceEl.innerText = formatINR(simSummary.netWorth, 0);
 
+    const drawerBalanceEl = document.getElementById("drawer-virtual-balance");
+    if (drawerBalanceEl) drawerBalanceEl.innerText = formatINR(simSummary.netWorth, 0);
+
     const streakEl = document.getElementById("header-streak-val");
     if (streakEl) streakEl.innerText = `${streak}d 🔥`;
 
     const xpEl = document.getElementById("header-xp-val");
     if (xpEl) xpEl.innerText = `${xp} XP`;
+
+    const drawerStreakXpEl = document.getElementById("drawer-streak-xp-val");
+    if (drawerStreakXpEl) drawerStreakXpEl.innerText = `${streak}d 🔥 • ${xp} XP`;
 
     const proBadge = document.getElementById("header-pro-badge");
     if (proBadge) {
@@ -320,7 +394,7 @@ window.ArthashalaApp = window.ArthashalaApp || {};
       </div>
 
       <!-- Market Movers Section -->
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div class="home-market-movers-grid">
         <div class="card">
           <div class="card-header">
             <div class="card-title"><span class="text-emerald">▲</span> Top Indian Gainers (24h)</div>
@@ -963,7 +1037,7 @@ window.ArthashalaApp = window.ArthashalaApp || {};
       </div>
 
       <!-- Asset Allocation & 30-Day Growth -->
-      <div style="display: grid; grid-template-columns: 320px 1fr; gap: 20px; margin-bottom: 24px;">
+      <div class="portfolio-main-grid">
         <!-- Allocation Breakdown -->
         <div class="card">
           <div class="card-header"><div class="card-title">Asset Allocation</div></div>
@@ -1523,7 +1597,7 @@ window.ArthashalaApp = window.ArthashalaApp || {};
         <p class="text-muted" style="font-size: 13px;">Professional position calculators per SEBI capital preservation best practices.</p>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px;">
+      <div class="risk-tools-grid">
         <!-- Position Size Calculator -->
         <div class="card">
           <div class="card-header"><div class="card-title">🛡️ Position Size Calculator</div></div>
@@ -1730,7 +1804,7 @@ window.ArthashalaApp = window.ArthashalaApp || {};
       );
 
     container.innerHTML = `
-      <div style="display: grid; grid-template-columns: 320px 1fr; gap: 24px;">
+      <div class="profile-layout-grid">
         <!-- User Identity Card -->
         <div class="card">
           <div style="text-align: center; padding-bottom: 20px; border-bottom: 1px solid var(--border-subtle);">
@@ -2166,6 +2240,18 @@ window.ArthashalaApp = window.ArthashalaApp || {};
       const menu = document.getElementById("nav-user-dropdown-menu");
       if (menu) menu.classList.toggle("open");
     },
+    toggleNavMoreDropdown: function(event) {
+      toggleNavMoreDropdown(event);
+    },
+    toggleMobileDrawer: function() {
+      toggleMobileDrawer();
+    },
+    openMobileDrawer: function() {
+      openMobileDrawer();
+    },
+    closeMobileDrawer: function() {
+      closeMobileDrawer();
+    },
     handleLogout: function() {
       if (confirm("Are you sure you want to sign out of Wealth Signal?")) {
         const menu = document.getElementById("nav-user-dropdown-menu");
@@ -2180,13 +2266,23 @@ window.ArthashalaApp = window.ArthashalaApp || {};
     }
   };
 
-  // Close user dropdown menu when clicking anywhere else
+  // Close menus and dropdowns when clicking outside
   document.addEventListener("click", e => {
+    // User profile dropdown
     const menu = document.getElementById("nav-user-dropdown-menu");
     const chipBtn = document.getElementById("nav-user-chip-btn");
     if (menu && menu.classList.contains("open")) {
       if (!menu.contains(e.target) && (!chipBtn || !chipBtn.contains(e.target))) {
         menu.classList.remove("open");
+      }
+    }
+
+    // Nav More dropdown
+    const moreMenu = document.getElementById("nav-more-dropdown-menu");
+    const moreTrigger = document.getElementById("nav-dropdown-trigger-btn");
+    if (moreMenu && moreMenu.classList.contains("open")) {
+      if (!moreMenu.contains(e.target) && (!moreTrigger || !moreTrigger.contains(e.target))) {
+        closeNavMoreDropdown();
       }
     }
   });
