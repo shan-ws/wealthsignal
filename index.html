@@ -66,7 +66,7 @@
       <li><a class="nav-link" data-route="simulator" onclick="window.ArthashalaApp.navigate('simulator')">Simulator</a></li>
       <li><a class="nav-link" data-route="portfolio" onclick="window.ArthashalaApp.navigate('portfolio')">Portfolio</a></li>
       <li><a class="nav-link" data-route="education" onclick="window.ArthashalaApp.navigate('education')">Academy</a></li>
-      <li><a class="nav-link" data-route="finance-ai" onclick="window.ArthashalaApp.navigate('finance-ai')">AI Tutor</a></li>
+      <li><a class="nav-link" data-route="finance-ai" onclick="window.ArthashalaApp.navigate('finance-ai')">Financial AI Tool</a></li>
 
       <!-- Secondary Tools Dropdown -->
       <li class="nav-dropdown-wrapper">
@@ -77,21 +77,21 @@
         <div class="nav-dropdown-menu" id="nav-more-dropdown-menu">
           <div class="dropdown-group-title">ADVANCED QUANTITATIVE</div>
           <a class="nav-dropdown-item nav-link" data-route="backtesting" onclick="window.ArthashalaApp.navigate('backtesting')">
-            <span class="dropdown-item-icon">🔬</span>
+            <span class="dropdown-item-icon">BT</span>
             <div class="dropdown-item-info">
               <span class="dropdown-item-name">Algorithmic Backtest</span>
               <span class="dropdown-item-desc">Test EMA, RSI & Supertrend rules</span>
             </div>
           </a>
           <a class="nav-dropdown-item nav-link" data-route="risk-tools" onclick="window.ArthashalaApp.navigate('risk-tools')">
-            <span class="dropdown-item-icon">🧮</span>
+            <span class="dropdown-item-icon">RK</span>
             <div class="dropdown-item-info">
               <span class="dropdown-item-name">Risk & Option Tools</span>
               <span class="dropdown-item-desc">Position sizing & Black-Scholes</span>
             </div>
           </a>
           <a class="nav-dropdown-item nav-link" data-route="journal" onclick="window.ArthashalaApp.navigate('journal')">
-            <span class="dropdown-item-icon">📝</span>
+            <span class="dropdown-item-icon">JN</span>
             <div class="dropdown-item-info">
               <span class="dropdown-item-name">Trading Journal</span>
               <span class="dropdown-item-desc">Psychology & trade performance log</span>
@@ -101,21 +101,21 @@
           <div class="dropdown-divider"></div>
           <div class="dropdown-group-title">ACCOUNT & PLATFORM</div>
           <a class="nav-dropdown-item nav-link" data-route="pricing" onclick="window.ArthashalaApp.navigate('pricing')">
-            <span class="dropdown-item-icon">⭐</span>
+            <span class="dropdown-item-icon">PRO</span>
             <div class="dropdown-item-info">
               <span class="dropdown-item-name">Pro Plans & Pricing</span>
               <span class="dropdown-item-desc">Institutional tier unlock</span>
             </div>
           </a>
           <a class="nav-dropdown-item nav-link" data-route="profile" onclick="window.ArthashalaApp.navigate('profile')">
-            <span class="dropdown-item-icon">👤</span>
+            <span class="dropdown-item-icon">USR</span>
             <div class="dropdown-item-info">
               <span class="dropdown-item-name">Profile & Badges</span>
               <span class="dropdown-item-desc">Learning rank, XP & streak stats</span>
             </div>
           </a>
           <a class="nav-dropdown-item nav-link" data-route="admin" onclick="window.ArthashalaApp.navigate('admin')">
-            <span class="dropdown-item-icon">🛡️</span>
+            <span class="dropdown-item-icon">ADM</span>
             <div class="dropdown-item-info">
               <span class="dropdown-item-name">Platform Admin</span>
               <span class="dropdown-item-desc">Regulatory compliance log</span>
@@ -133,13 +133,13 @@
       </div>
 
       <div class="user-status-pill desktop-only">
-        <span class="streak-indicator" id="header-streak-val" title="Active Learning Streak">5d 🔥</span>
+        <span class="streak-indicator" id="header-streak-val" title="Active Learning Streak">5d Streak</span>
         <span style="color: var(--border-subtle);">|</span>
         <span class="xp-indicator" id="header-xp-val" title="Gamification Experience Points">1450 XP</span>
       </div>
 
       <button class="btn btn-primary btn-sm btn-glow desktop-only" onclick="window.ArthashalaComponents.checkout.openModal('1Y')">
-        ⭐ Upgrade
+        Upgrade to Pro
       </button>
 
       <!-- Dynamic User Auth Chip / Sign In Button -->
@@ -179,15 +179,15 @@
         </div>
         <div class="drawer-stat-item">
           <span class="drawer-stat-lbl">Streak & XP</span>
-          <span class="drawer-stat-val font-mono" id="drawer-streak-xp-val">5d 🔥 • 1450 XP</span>
+          <span class="drawer-stat-val font-mono" id="drawer-streak-xp-val">5d Streak • 1450 XP</span>
         </div>
       </div>
       <div class="drawer-cta-row">
         <button class="btn btn-primary btn-sm btn-glow" style="flex: 1;" onclick="window.ArthashalaComponents.checkout.openModal('1Y'); window.ArthashalaApp.closeMobileDrawer();">
-          ⭐ Upgrade to Pro
+          Upgrade to Pro
         </button>
         <button class="btn btn-secondary btn-sm" id="drawer-auth-btn" onclick="window.ArthashalaComponents.auth.openModal('phone', 'signin'); window.ArthashalaApp.closeMobileDrawer();">
-          🔑 Sign In
+          Sign In
         </button>
       </div>
     </div>
@@ -196,28 +196,28 @@
     <div class="mobile-drawer-nav-list">
       <div class="drawer-section-heading">TRADING & MARKETS</div>
       <a class="drawer-nav-link nav-link" data-route="home" onclick="window.ArthashalaApp.navigate('home'); window.ArthashalaApp.closeMobileDrawer();">
-        <span class="drawer-link-icon">🏠</span>
+        <span class="drawer-link-icon">DSH</span>
         <div class="drawer-link-meta">
           <span class="drawer-link-title">Home Dashboard</span>
           <span class="drawer-link-sub">Market summary & top gainers/losers</span>
         </div>
       </a>
       <a class="drawer-nav-link nav-link" data-route="markets" onclick="window.ArthashalaApp.navigate('markets'); window.ArthashalaApp.closeMobileDrawer();">
-        <span class="drawer-link-icon">📊</span>
+        <span class="drawer-link-icon">MKT</span>
         <div class="drawer-link-meta">
           <span class="drawer-link-title">Live Markets</span>
           <span class="drawer-link-sub">NSE/BSE Screener & TradingView</span>
         </div>
       </a>
       <a class="drawer-nav-link nav-link" data-route="simulator" onclick="window.ArthashalaApp.navigate('simulator'); window.ArthashalaApp.closeMobileDrawer();">
-        <span class="drawer-link-icon">⚡</span>
+        <span class="drawer-link-icon">SIM</span>
         <div class="drawer-link-meta">
           <span class="drawer-link-title">Virtual Simulator</span>
           <span class="drawer-link-sub">Risk-free execution with ₹10L demo capital</span>
         </div>
       </a>
       <a class="drawer-nav-link nav-link" data-route="portfolio" onclick="window.ArthashalaApp.navigate('portfolio'); window.ArthashalaApp.closeMobileDrawer();">
-        <span class="drawer-link-icon">💼</span>
+        <span class="drawer-link-icon">PTF</span>
         <div class="drawer-link-meta">
           <span class="drawer-link-title">Portfolio Analytics</span>
           <span class="drawer-link-sub">Holdings, P&L, Sharpe & Drawdown</span>
@@ -226,21 +226,21 @@
 
       <div class="drawer-section-heading">INTELLIGENCE & RESEARCH</div>
       <a class="drawer-nav-link nav-link" data-route="education" onclick="window.ArthashalaApp.navigate('education'); window.ArthashalaApp.closeMobileDrawer();">
-        <span class="drawer-link-icon">📚</span>
+        <span class="drawer-link-icon">ACD</span>
         <div class="drawer-link-meta">
           <span class="drawer-link-title">Financial Academy</span>
           <span class="drawer-link-sub">6 structured tracks & certifications</span>
         </div>
       </a>
       <a class="drawer-nav-link nav-link" data-route="finance-ai" onclick="window.ArthashalaApp.navigate('finance-ai'); window.ArthashalaApp.closeMobileDrawer();">
-        <span class="drawer-link-icon">🤖</span>
+        <span class="drawer-link-icon">AI</span>
         <div class="drawer-link-meta">
-          <span class="drawer-link-title">Finance AI Tutor</span>
-          <span class="drawer-link-sub">SEBI/RBI citations & answers</span>
+          <span class="drawer-link-title">Omni-Market Financial AI</span>
+          <span class="drawer-link-sub">Stocks, Options, Crypto, Forex, MCX & Bonds</span>
         </div>
       </a>
       <a class="drawer-nav-link nav-link" data-route="journal" onclick="window.ArthashalaApp.navigate('journal'); window.ArthashalaApp.closeMobileDrawer();">
-        <span class="drawer-link-icon">📝</span>
+        <span class="drawer-link-icon">JRN</span>
         <div class="drawer-link-meta">
           <span class="drawer-link-title">Trading Journal</span>
           <span class="drawer-link-sub">Psychology & discipline logs</span>
@@ -249,14 +249,14 @@
 
       <div class="drawer-section-heading">QUANTITATIVE LAB</div>
       <a class="drawer-nav-link nav-link" data-route="backtesting" onclick="window.ArthashalaApp.navigate('backtesting'); window.ArthashalaApp.closeMobileDrawer();">
-        <span class="drawer-link-icon">🔬</span>
+        <span class="drawer-link-icon">QNT</span>
         <div class="drawer-link-meta">
           <span class="drawer-link-title">Algorithmic Backtest</span>
           <span class="drawer-link-sub">EMA, RSI & Supertrend backtester</span>
         </div>
       </a>
       <a class="drawer-nav-link nav-link" data-route="risk-tools" onclick="window.ArthashalaApp.navigate('risk-tools'); window.ArthashalaApp.closeMobileDrawer();">
-        <span class="drawer-link-icon">🧮</span>
+        <span class="drawer-link-icon">RSK</span>
         <div class="drawer-link-meta">
           <span class="drawer-link-title">Risk & Option Tools</span>
           <span class="drawer-link-sub">Position sizing & Black-Scholes</span>
@@ -265,21 +265,21 @@
 
       <div class="drawer-section-heading">ACCOUNT & SETTINGS</div>
       <a class="drawer-nav-link nav-link" data-route="pricing" onclick="window.ArthashalaApp.navigate('pricing'); window.ArthashalaApp.closeMobileDrawer();">
-        <span class="drawer-link-icon">⭐</span>
+        <span class="drawer-link-icon">PRO</span>
         <div class="drawer-link-meta">
           <span class="drawer-link-title">Pro Plans & Pricing</span>
           <span class="drawer-link-sub">Subscription tiers & benefits</span>
         </div>
       </a>
       <a class="drawer-nav-link nav-link" data-route="profile" onclick="window.ArthashalaApp.navigate('profile'); window.ArthashalaApp.closeMobileDrawer();">
-        <span class="drawer-link-icon">👤</span>
+        <span class="drawer-link-icon">PRF</span>
         <div class="drawer-link-meta">
           <span class="drawer-link-title">Profile & Badges</span>
           <span class="drawer-link-sub">Achievements & rank status</span>
         </div>
       </a>
       <a class="drawer-nav-link nav-link" data-route="admin" onclick="window.ArthashalaApp.navigate('admin'); window.ArthashalaApp.closeMobileDrawer();">
-        <span class="drawer-link-icon">🛡️</span>
+        <span class="drawer-link-icon">ADM</span>
         <div class="drawer-link-meta">
           <span class="drawer-link-title">Platform Admin</span>
           <span class="drawer-link-sub">Regulatory notices & compliance logs</span>
@@ -294,21 +294,21 @@
   <!-- Mobile Bottom Navigation Dock (Native App Style) -->
   <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Quick Navigation">
     <button class="bottom-nav-item nav-link active" data-route="home" onclick="window.ArthashalaApp.navigate('home')">
-      <span class="bottom-nav-icon">🏠</span>
+      <span class="bottom-nav-icon">·</span>
       <span class="bottom-nav-label">Home</span>
     </button>
     <button class="bottom-nav-item nav-link" data-route="markets" onclick="window.ArthashalaApp.navigate('markets')">
-      <span class="bottom-nav-icon">📊</span>
+      <span class="bottom-nav-icon">·</span>
       <span class="bottom-nav-label">Markets</span>
     </button>
     <button class="bottom-nav-item nav-link bottom-nav-action-center" data-route="simulator" onclick="window.ArthashalaApp.navigate('simulator')">
       <div class="bottom-nav-action-circle">
-        <span class="bottom-nav-icon">⚡</span>
+        <span class="bottom-nav-icon">+</span>
       </div>
       <span class="bottom-nav-label">Trade</span>
     </button>
     <button class="bottom-nav-item nav-link" data-route="portfolio" onclick="window.ArthashalaApp.navigate('portfolio')">
-      <span class="bottom-nav-icon">💼</span>
+      <span class="bottom-nav-icon">·</span>
       <span class="bottom-nav-label">Portfolio</span>
     </button>
     <button class="bottom-nav-item" id="bottom-nav-more-toggle" onclick="window.ArthashalaApp.toggleMobileDrawer()">
@@ -364,7 +364,7 @@
         <strong style="color: #fff; font-size: 13px; display: block; margin-bottom: 12px;">Knowledge & Research</strong>
         <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
           <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('education')" style="color: var(--text-secondary); text-decoration: none;">6 Structured Academy Tracks</a></li>
-          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('finance-ai')" style="color: var(--text-secondary); text-decoration: none;">Finance AI Tutor (SEBI/RBI Citations)</a></li>
+          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('finance-ai')" style="color: var(--text-secondary); text-decoration: none;">Omni-Market Financial AI (SEBI, RBI, SEC, CBOE, BIS, CME)</a></li>
           <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('risk-tools')" style="color: var(--text-secondary); text-decoration: none;">F&O & Position Sizing Tools</a></li>
           <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('journal')" style="color: var(--text-secondary); text-decoration: none;">Psychological Trading Journal</a></li>
         </ul>

@@ -147,9 +147,9 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
             </div>
             <div class="tv-modal-actions">
               <button class="btn btn-sm btn-primary" id="tv-modal-trade-btn" style="display: flex; align-items: center; gap: 6px;">
-                ⚡ Paper Trade in Simulator
+                Paper Trade in Simulator
               </button>
-              <button class="btn-close-modal" id="tv-modal-close-btn" title="Close Chart (Esc)">✕</button>
+              <button class="btn-close-modal" id="tv-modal-close-btn" title="Close Chart (Esc)"></button>
             </div>
           </div>
           <div class="tradingview-modal-body" id="tv-modal-chart-host">

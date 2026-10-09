@@ -129,16 +129,16 @@ window.ArthashalaServices = window.ArthashalaServices || {};
 
       const recommendations = [];
       if (fomoTrades.length > 0 && fomoLossRate >= 50) {
-        recommendations.push("⚠️ Behavioral Alert: Over 60% of your FOMO-tagged trades ended in losses. Implement a mandatory 5-minute wait rule before chasing breakout candles.");
+        recommendations.push("Behavioral Alert: Over 60% of your FOMO-tagged trades ended in losses. Implement a mandatory 5-minute wait rule before chasing breakout candles.");
       }
       if (slCompliant / total >= 0.8) {
-        recommendations.push("✅ Strong Execution: You have respected your Stop Loss in >80% of trades, which protects your capital against black swan crashes.");
+        recommendations.push("Strong Execution: You have respected your Stop Loss in >80% of trades, which protects your capital against black swan crashes.");
       }
       if (planCompliant / total < 0.7) {
-        recommendations.push("⚠️ Trading Deviation: You are deviating from your written trade plan in over 30% of entries. Review the Technical Analysis track.");
+        recommendations.push("Trading Deviation: You are deviating from your written trade plan in over 30% of entries. Review the Technical Analysis track.");
       }
       if (recommendations.length === 0) {
-        recommendations.push("🎯 Balanced Mindset: Your emotional journal exhibits steady discipline across recent market swings.");
+        recommendations.push(" Balanced Mindset: Your emotional journal exhibits steady discipline across recent market swings.");
       }
 
       return {

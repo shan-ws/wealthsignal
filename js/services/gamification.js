@@ -10,12 +10,12 @@ window.ArthashalaServices = window.ArthashalaServices || {};
   if (isNaN(xp)) xp = 1450; // Starts at intermediate Level 3 for rich demo experience
 
   let badges = JSON.parse(localStorage.getItem(STORAGE_KEY_BADGES)) || [
-    { id: "badge-1", name: "First Market Trade", icon: "⚡", description: "Executed your first simulated order on NSE", unlocked: true, date: "2 days ago" },
-    { id: "badge-2", name: "SEBI Compliance Savvy", icon: "📜", description: "Completed Indian Market Structure Academy Track", unlocked: true, date: "Yesterday" },
-    { id: "badge-3", name: "Risk Disciplinarian", icon: "🛡️", description: "Maintained <2% risk and honored stop losses on 5 consecutive trades", unlocked: true, date: "Today" },
-    { id: "badge-4", name: "Backtest Pioneer", icon: "🔬", description: "Ran full historical strategy backtesting simulation", unlocked: true, date: "Today" },
-    { id: "badge-5", name: "Psychological Journaler", icon: "📝", description: "Logged trade reflection and identified FOMO patterns", unlocked: true, date: "3 days ago" },
-    { id: "badge-6", name: "7-Day Streak Master", icon: "🔥", description: "Engaged in daily market analysis for 7 consecutive days", unlocked: false, date: "In Progress (5/7)" }
+    { id: "badge-1", name: "First Market Trade", icon: "TRD", description: "Executed your first simulated order on NSE", unlocked: true, date: "2 days ago" },
+    { id: "badge-2", name: "SEBI Compliance Savvy", icon: "REG", description: "Completed Indian Market Structure Academy Track", unlocked: true, date: "Yesterday" },
+    { id: "badge-3", name: "Risk Disciplinarian", icon: "RSK", description: "Maintained <2% risk and honored stop losses on 5 consecutive trades", unlocked: true, date: "Today" },
+    { id: "badge-4", name: "Backtest Pioneer", icon: "QNT", description: "Ran full historical strategy backtesting simulation", unlocked: true, date: "Today" },
+    { id: "badge-5", name: "Psychological Journaler", icon: "", description: "Logged trade reflection and identified FOMO patterns", unlocked: true, date: "3 days ago" },
+    { id: "badge-6", name: "7-Day Streak Master", icon: "STR", description: "Engaged in daily market analysis for 7 consecutive days", unlocked: false, date: "In Progress (5/7)" }
   ];
 
   let streak = parseInt(localStorage.getItem(STORAGE_KEY_STREAK), 10);
@@ -31,14 +31,14 @@ window.ArthashalaServices = window.ArthashalaServices || {};
 
   // Leaderboard ranking by Sharpe Ratio and Discipline rather than raw P&L
   const communityLeaderboard = [
-    { rank: 1, name: "Aarav Sharma", city: "Bengaluru", sharpe: 2.84, winRate: 74, pnl: "₹2,48,500", level: "Market Maven", badge: "🏆" },
-    { rank: 2, name: "Priya Sundaram", city: "Chennai", sharpe: 2.61, winRate: 71, pnl: "₹1,84,200", level: "Risk Virtuoso", badge: "🥈" },
-    { rank: 3, name: "Rohan Varma", city: "Mumbai", sharpe: 2.45, winRate: 68, pnl: "₹1,95,000", level: "Risk Virtuoso", badge: "🥉" },
+    { rank: 1, name: "Aarav Sharma", city: "Bengaluru", sharpe: 2.84, winRate: 74, pnl: "₹2,48,500", level: "Market Maven", badge: "" },
+    { rank: 2, name: "Priya Sundaram", city: "Chennai", sharpe: 2.61, winRate: 71, pnl: "₹1,84,200", level: "Risk Virtuoso", badge: "" },
+    { rank: 3, name: "Rohan Varma", city: "Mumbai", sharpe: 2.45, winRate: 68, pnl: "₹1,95,000", level: "Risk Virtuoso", badge: "" },
     { rank: 4, name: "Ananya Patel", city: "Ahmedabad", sharpe: 2.20, winRate: 66, pnl: "₹1,42,800", level: "Strategic Trader", badge: "⭐" },
     { rank: 5, name: "Vikram Malhotra", city: "Delhi NCR", sharpe: 2.05, winRate: 64, pnl: "₹1,12,000", level: "Strategic Trader", badge: "⭐" },
-    { rank: 6, name: "You (Demo User)", city: "India", sharpe: 1.85, winRate: 67, pnl: "₹45,200", level: "Strategic Trader", isUser: true, badge: "🎯" },
-    { rank: 7, name: "Kavita Nair", city: "Kochi", sharpe: 1.72, winRate: 61, pnl: "₹88,400", level: "Analytical Apprentice", badge: "⚡" },
-    { rank: 8, name: "Devendra Singh", city: "Jaipur", sharpe: 1.58, winRate: 59, pnl: "₹64,200", level: "Analytical Apprentice", badge: "⚡" }
+    { rank: 6, name: "You (Demo User)", city: "India", sharpe: 1.85, winRate: 67, pnl: "₹45,200", level: "Strategic Trader", isUser: true, badge: "" },
+    { rank: 7, name: "Kavita Nair", city: "Kochi", sharpe: 1.72, winRate: 61, pnl: "₹88,400", level: "Analytical Apprentice", badge: "" },
+    { rank: 8, name: "Devendra Singh", city: "Jaipur", sharpe: 1.58, winRate: 59, pnl: "₹64,200", level: "Analytical Apprentice", badge: "" }
   ];
 
   function save() {

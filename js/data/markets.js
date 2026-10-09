@@ -352,6 +352,42 @@ window.ArthashalaData.markets = [
     marketCap: "₹31.5 Lakh Cr",
     description: "Leading decentralized smart contract platform paired against INR.",
     baseHistoricalPrice: 235000
+  },
+  {
+    symbol: "INDIA 10Y G-SEC",
+    tvSymbol: "TVC:IN10Y",
+    name: "India 10Y Benchmark Sovereign G-Sec",
+    exchange: "RBI NDS-OM",
+    category: "bonds",
+    sector: "Sovereign Debt",
+    price: 100.85,
+    prevClose: 100.70,
+    high24h: 101.10,
+    low24h: 100.60,
+    volume: "₹18,500 Cr",
+    lotSize: 100,
+    pe: 0,
+    marketCap: "₹92.4 Lakh Cr",
+    description: "Government of India 10-Year Benchmark Sovereign Bond (7.18% GS 2033), representing the sovereign risk-free yield curve anchor for Indian financial markets.",
+    baseHistoricalPrice: 100.00
+  },
+  {
+    symbol: "US 10Y TREASURY",
+    tvSymbol: "TVC:US10Y",
+    name: "US 10-Year Benchmark Treasury Note",
+    exchange: "US Treasury",
+    category: "bonds",
+    sector: "Global Sovereign Debt",
+    price: 98.40,
+    prevClose: 98.25,
+    high24h: 98.75,
+    low24h: 98.10,
+    volume: "$480B Daily",
+    lotSize: 10,
+    pe: 0,
+    marketCap: "$27.2 Trillion",
+    description: "The premier global risk-free debt benchmark issued by the United States Department of the Treasury.",
+    baseHistoricalPrice: 97.50
   }
 ];
 
@@ -372,6 +408,8 @@ window.ArthashalaData.getTradingViewSymbol = function(symbol) {
   if (clean === "EURINR") return "FX_IDC:EURINR";
   if (clean === "BTCINR" || clean === "BTC") return "BINANCE:BTCUSDT";
   if (clean === "ETHINR" || clean === "ETH") return "BINANCE:ETHUSDT";
+  if (clean === "INDIA 10Y G-SEC" || clean === "IN10Y" || clean === "G-SEC") return "TVC:IN10Y";
+  if (clean === "US 10Y TREASURY" || clean === "US10Y" || clean === "TREASURY") return "TVC:US10Y";
   return `NSE:${clean}`;
 };
 

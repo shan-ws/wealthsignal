@@ -1,53 +1,53 @@
 /* ==========================================================================
-   WEALTH SIGNAL — Institutional Fintech Design System (Dark Obsidian Edition)
+   WEALTH SIGNAL — Institutional Fintech Design System (Luxury Brown & White Edition)
    Crafted for Desktop & Mobile Web App Excellence
    ========================================================================== */
 
 :root {
-  /* Color Palette: Deep Institutional Obsidian & Slate */
-  --bg-base: #060911;
-  --bg-surface: #0b1120;
-  --bg-card: #0e1629;
-  --bg-card-hover: #142038;
-  --bg-card-elevated: #1a2948;
-  --bg-input: rgba(11, 17, 32, 0.85);
+  /* Color Palette: Deep Roasted Espresso, Warm Mocha, Rich Bronze & Crisp White */
+  --bg-base: #120e0b;
+  --bg-surface: #18130f;
+  --bg-card: #201914;
+  --bg-card-hover: #2a211b;
+  --bg-card-elevated: #342921;
+  --bg-input: rgba(24, 19, 15, 0.95);
 
-  /* Subtle High-Tech Borders */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-subtle-hover: rgba(255, 255, 255, 0.16);
-  --border-medium: rgba(255, 255, 255, 0.12);
-  --border-focus: #38bdf8;
+  /* Subtle Warm Linen & Ivory Borders */
+  --border-subtle: rgba(235, 222, 210, 0.12);
+  --border-subtle-hover: rgba(235, 222, 210, 0.24);
+  --border-medium: rgba(235, 222, 210, 0.2);
+  --border-focus: #c59b6d;
 
-  /* Typography Hierarchy */
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --text-inverse: #060911;
+  /* Typography Hierarchy: Crisp Pure White & Warm Linen Cream */
+  --text-primary: #ffffff;
+  --text-secondary: #e5ded6;
+  --text-muted: #a69789;
+  --text-inverse: #120e0b;
 
-  /* Market Performance Colors */
-  --emerald: #10b981;
-  --emerald-dim: rgba(16, 185, 129, 0.12);
-  --emerald-border: rgba(16, 185, 129, 0.35);
-  --emerald-glow: rgba(16, 185, 129, 0.25);
+  /* Market Performance Colors (Refined Financial Tones) */
+  --emerald: #34d399;
+  --emerald-dim: rgba(52, 211, 153, 0.14);
+  --emerald-border: rgba(52, 211, 153, 0.35);
+  --emerald-glow: rgba(52, 211, 153, 0.22);
 
-  --rose: #f43f5e;
-  --rose-dim: rgba(244, 63, 94, 0.12);
-  --rose-border: rgba(244, 63, 94, 0.35);
-  --rose-glow: rgba(244, 63, 94, 0.25);
+  --rose: #f87171;
+  --rose-dim: rgba(248, 113, 113, 0.14);
+  --rose-border: rgba(248, 113, 113, 0.35);
+  --rose-glow: rgba(248, 113, 113, 0.22);
 
-  /* Brand Accents */
-  --cyan: #38bdf8;
-  --cyan-dim: rgba(56, 189, 248, 0.12);
-  --cyan-border: rgba(56, 189, 248, 0.35);
-  --cyan-glow: rgba(56, 189, 248, 0.25);
+  /* Brand Accents: Warm Bronze, Camel & Champagne Gold */
+  --cyan: #c59b6d;
+  --cyan-dim: rgba(197, 155, 109, 0.15);
+  --cyan-border: rgba(197, 155, 109, 0.4);
+  --cyan-glow: rgba(197, 155, 109, 0.25);
 
-  --amber: #f59e0b;
-  --amber-dim: rgba(245, 158, 11, 0.12);
-  --amber-border: rgba(245, 158, 11, 0.35);
+  --amber: #d97706;
+  --amber-dim: rgba(217, 119, 6, 0.14);
+  --amber-border: rgba(217, 119, 6, 0.35);
 
-  --purple: #8b5cf6;
-  --purple-dim: rgba(139, 92, 246, 0.12);
-  --purple-border: rgba(139, 92, 246, 0.35);
+  --purple: #a48268;
+  --purple-dim: rgba(164, 130, 104, 0.15);
+  --purple-border: rgba(164, 130, 104, 0.35);
 
   /* Typography Stack */
   --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -62,16 +62,16 @@
   --radius-full: 9999px;
 
   /* Layered Depth & Elevation */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 14px 34px -4px rgba(0, 0, 0, 0.7);
-  --shadow-glow-emerald: 0 0 24px rgba(16, 185, 129, 0.2);
-  --shadow-glow-cyan: 0 0 24px rgba(56, 189, 248, 0.2);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 14px 34px -4px rgba(0, 0, 0, 0.75);
+  --shadow-glow-emerald: 0 0 24px rgba(52, 211, 153, 0.18);
+  --shadow-glow-cyan: 0 0 24px rgba(197, 155, 109, 0.22);
 
   /* Glassmorphism */
-  --glass-bg: rgba(11, 17, 32, 0.85);
-  --glass-card: rgba(14, 22, 41, 0.75);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(18, 14, 11, 0.9);
+  --glass-card: rgba(24, 19, 15, 0.85);
+  --glass-border: rgba(235, 222, 210, 0.12);
 
   /* Layout Constants */
   --header-height: 64px;
@@ -97,9 +97,9 @@ html {
 body {
   background-color: var(--bg-base);
   background-image:
-    radial-gradient(circle at 50% -10%, rgba(56, 189, 248, 0.08) 0%, transparent 60%),
-    radial-gradient(circle at 95% 20%, rgba(16, 185, 129, 0.04) 0%, transparent 40%),
-    radial-gradient(circle at 5% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 40%);
+    radial-gradient(circle at 50% -10%, rgba(197, 155, 109, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 95% 20%, rgba(197, 155, 109, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 5% 80%, rgba(164, 130, 104, 0.04) 0%, transparent 40%);
   background-attachment: fixed;
   color: var(--text-primary);
   font-family: var(--font-main);
@@ -1077,15 +1077,17 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: #060911;
+  background: #ffffff;
+  color: #120e0b;
   font-weight: 800;
-  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.25);
+  border: 1px solid #e5ded6;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.18);
 }
 
 .btn-primary:hover {
-  filter: brightness(1.1);
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+  background: #f5ede4;
+  color: #120e0b;
+  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.32);
   transform: translateY(-1px);
 }
 
@@ -1098,18 +1100,27 @@ body {
 .btn-secondary:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-subtle-hover);
+  color: #ffffff;
   transform: translateY(-1px);
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--cyan);
-  border: 1px solid var(--cyan-border);
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
 }
 
 .btn-outline:hover {
-  background: var(--cyan-dim);
-  border-color: var(--cyan);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.btn-bronze {
+  background: linear-gradient(135deg, #c59b6d 0%, #a8794c 100%);
+  color: #ffffff;
+  font-weight: 800;
+  border: 1px solid rgba(235, 222, 210, 0.2);
 }
 
 .btn-danger {
@@ -1134,7 +1145,7 @@ body {
 }
 
 .btn-glow {
-  box-shadow: 0 0 18px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 /* ==========================================================================
@@ -1448,20 +1459,48 @@ body {
   }
 
   .hero-tagline-box {
-    padding: 24px 18px;
+    padding: 22px 16px;
   }
 
   .hero-tagline-title {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .core-loop-flow {
-    gap: 6px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
 
   .loop-step {
-    padding: 6px 10px;
+    padding: 8px 10px;
     font-size: 11px;
+    text-align: center;
+  }
+
+  .filter-pills-group {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 6px;
+    padding-bottom: 6px;
+    width: 100%;
+  }
+
+  .pill-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .fin-table {
+    min-width: 680px;
   }
 }
 
@@ -1469,6 +1508,15 @@ body {
 @media (max-width: 480px) {
   .main-nav {
     padding: 0 10px;
+    gap: 6px;
+  }
+
+  .nav-right-actions {
+    gap: 6px;
+  }
+
+  .virtual-balance-chip {
+    padding: 4px 7px;
   }
 
   .virtual-balance-chip .balance-label {
@@ -1481,5 +1529,10 @@ body {
 
   .card {
     padding: 14px;
+    border-radius: var(--radius-sm);
+  }
+
+  .core-loop-flow {
+    grid-template-columns: 1fr;
   }
 }
