@@ -159,7 +159,7 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  drawerAuthBtn.innerHTML = `Sign In`;
  drawerAuthBtn.onclick = () => {
  if (window.ArthashalaComponents.auth) {
- window.ArthashalaComponents.auth.openModal('phone', 'signin');
+ window.ArthashalaComponents.auth.openModal('signin');
  }
  closeMobileDrawer();
  };
@@ -170,7 +170,7 @@ window.ArthashalaApp = window.ArthashalaApp || {};
 
  if (user) {
  if (navLinkAuth) navLinkAuth.innerText = "Account";
- const providerIcon = user.provider === "google" ? "Google" : (user.provider === "phone" ? "Phone OTP" : "Email");
+ const providerIcon = user.provider === "google" ? "Google" : "Email";
  authContainer.innerHTML = `
  <div class="nav-user-chip" id="nav-user-chip-btn" onclick="window.ArthashalaApp.toggleUserMenu(event)">
  <img src="${user.avatar || 'assets/logo.jpg'}" alt="${user.name}" class="nav-user-avatar" />
@@ -180,7 +180,7 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  <div class="user-profile-menu" id="nav-user-dropdown-menu">
  <div class="menu-user-header">
  <div class="menu-user-name">${user.name}</div>
- <div class="menu-user-sub">${user.email || user.phone}</div>
+ <div class="menu-user-sub">${user.email || "Trader"}</div>
  <div class="menu-provider-badge"> ${providerIcon}</div>
  </div>
  <div class="menu-items-group">
@@ -205,7 +205,7 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  } else {
  if (navLinkAuth) navLinkAuth.innerText = "Sign In";
  authContainer.innerHTML = `
- <button class="nav-signin-btn" onclick="window.ArthashalaComponents.auth.openModal('phone', 'signin')">
+ <button class="nav-signin-btn" onclick="window.ArthashalaComponents.auth.openModal('signin')">
  <span class="nav-item-tag">AUTH</span> Sign In
  </button>
  `;
@@ -1923,17 +1923,14 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  const sub = window.ArthashalaComponents.checkout.getSubscription();
 
  const userName = user ? user.name : "Arjun Singhania";
- const userSubText = user ? (user.email || user.phone) : "Virtual Trader #AS-4892";
+ const userSubText = user ? (user.email || user.name) : "Virtual Trader #AS-4892";
  const userProvider = user ? user.provider : "google";
  const userAvatar = user && user.avatar ? user.avatar : "assets/logo.jpg";
  const isProUser = user ? user.isPro : sub.isPro;
 
- const providerBadge = userProvider === "google"
- ? `<span class="badge-tag" style="background: rgba(66, 133, 244, 0.15); color: #60a5fa; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700;"> GOOGLE VERIFIED</span>`
- : (userProvider === "phone"
- ? `<span class="badge-tag" style="background: rgba(0, 229, 153, 0.15); color: var(--emerald); padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700;"> PHONE OTP VERIFIED</span>`
- : `<span class="badge-tag" style="background: rgba(245, 158, 11, 0.15); color: var(--amber); padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700;">️ EMAIL VERIFIED</span>`
- );
+    const providerBadge = userProvider === "google"
+      ? `<span class="badge-tag" style="background: rgba(66, 133, 244, 0.15); color: #60a5fa; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700;">✓ GOOGLE VERIFIED</span>`
+      : `<span class="badge-tag" style="background: rgba(245, 158, 11, 0.15); color: var(--amber); padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700;">✉️ EMAIL VERIFIED</span>`;
 
  container.innerHTML = `
  <div class="profile-layout-grid">
@@ -1970,7 +1967,7 @@ window.ArthashalaApp = window.ArthashalaApp || {};
 
  <!-- Account Actions & Logout -->
  <div style="margin-top: 24px; border-top: 1px solid var(--border-subtle); padding-top: 16px; display: flex; flex-direction: column; gap: 10px;">
- <button class="btn btn-secondary" style="width: 100%;" onclick="window.ArthashalaComponents.auth.openModal('phone', 'signin')">
+ <button class="btn btn-secondary" style="width: 100%;" onclick="window.ArthashalaComponents.auth.openModal('signin')">
  ⇄ Switch / Log In to Another Account
  </button>
  <button class="btn btn-danger" style="width: 100%;" onclick="window.ArthashalaApp.resetVirtualAccount()">

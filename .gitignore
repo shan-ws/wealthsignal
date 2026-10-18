@@ -21,9 +21,8 @@ yarn-error.log*
 *.key
 
 # Vercel & Deployments
-.vercel
+.Vercel/
 .vercel/
-
 # Temporary & Log files
 *.log
 scratch/

@@ -1,6 +1,6 @@
 // Wealth Signal (Arthashala) Authentication Service
 // Integrated with Firebase (wealthsignal-d1329) & Cloud Firestore
-// Supports Phone Number OTP, Google Sign-In, and Email/Password Login & Registration
+// Supports Google Sign-In and Email/Password Login & Registration
 window.ArthashalaServices = window.ArthashalaServices || {};
 
 (function() {
@@ -13,7 +13,6 @@ window.ArthashalaServices = window.ArthashalaServices || {};
       id: "usr_google_arjun",
       name: "Arjun Singhania",
       email: "arjun.singhania@gmail.com",
-      phone: "+91 98765 43210",
       provider: "google",
       avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
       role: "Pro Virtuoso Trader",
@@ -23,11 +22,10 @@ window.ArthashalaServices = window.ArthashalaServices || {};
       verified: true
     },
     {
-      id: "usr_phone_priya",
+      id: "usr_email_priya",
       name: "Priya Sharma",
       email: "priya.sharma@wealthsignal.in",
-      phone: "+91 98112 23344",
-      provider: "phone",
+      provider: "email",
       avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&auto=format&fit=crop&q=80",
       role: "Intraday Derivatives Trader",
       tier: "Intermediate Trader",
@@ -39,7 +37,6 @@ window.ArthashalaServices = window.ArthashalaServices || {};
       id: "usr_email_rohit",
       name: "Rohit Mehta",
       email: "trader@wealthsignal.in",
-      phone: "+91 99887 76655",
       provider: "email",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80",
       role: "Swing Equity Investor",
@@ -68,7 +65,7 @@ window.ArthashalaServices = window.ArthashalaServices || {};
     if (saved) {
       const parsed = JSON.parse(saved);
       // Clean up legacy mock sessions so visitors start logged out
-      if (parsed && !["usr_google_arjun", "usr_phone_priya", "usr_email_rohit"].includes(parsed.id)) {
+      if (parsed && !["usr_google_arjun", "usr_phone_priya", "usr_email_priya", "usr_email_rohit"].includes(parsed.id)) {
         currentSession = parsed;
       } else {
         localStorage.removeItem(STORAGE_KEY_SESSION);
@@ -80,16 +77,6 @@ window.ArthashalaServices = window.ArthashalaServices || {};
   } catch (e) {
     currentSession = null;
   }
-
-  // Pending OTP verification state
-  let pendingOtpState = {
-    phone: null,
-    countryCode: "+91",
-    rawPhone: null,
-    otp: null,
-    confirmationResult: null,
-    expiresAt: null
-  };
 
   const listeners = [];
 
@@ -105,22 +92,19 @@ window.ArthashalaServices = window.ArthashalaServices || {};
     let provider = "email";
     if (providerId.includes("google") || (fbUser.email && fbUser.photoURL && fbUser.photoURL.includes("googleusercontent"))) {
       provider = "google";
-    } else if (providerId.includes("phone") || fbUser.phoneNumber) {
-      provider = "phone";
     }
 
     return {
       id: fbUser.uid,
       name: fbUser.displayName || extra.name || (fbUser.email ? fbUser.email.split("@")[0] : "Trader"),
-      email: fbUser.email || (provider === "phone" ? `${fbUser.phoneNumber.replace(/[^0-9]/g, "")}@wealthsignal.in` : ""),
-      phone: fbUser.phoneNumber || extra.phone || "+91 98765 00000",
+      email: fbUser.email || (extra.email || "trader@wealthsignal.in"),
       provider: provider,
       avatar: fbUser.photoURL || extra.avatar || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=120&auto=format&fit=crop&q=80",
       role: extra.role || "Retail Market Trader",
       tier: extra.tier || "Novice Trader",
       joinedDate: extra.joinedDate || new Date().toLocaleDateString("en-IN", { month: "short", year: "numeric" }),
       isPro: extra.isPro !== undefined ? extra.isPro : false,
-      verified: fbUser.emailVerified || !!fbUser.phoneNumber || true,
+      verified: fbUser.emailVerified || true,
       firebaseUid: fbUser.uid
     };
   }
@@ -196,86 +180,7 @@ window.ArthashalaServices = window.ArthashalaServices || {};
       }
     },
 
-    // 1. PHONE NUMBER AUTHENTICATION WITH OTP
-    sendPhoneOtp: function(phoneNumber, countryCode = "+91") {
-      const cleanPhone = phoneNumber.replace(/[^0-9]/g, "");
-      if (cleanPhone.length < 10) {
-        return Promise.reject(new Error("Please enter a valid 10-digit mobile number"));
-      }
-
-      const fullPhone = `${countryCode} ${cleanPhone.slice(0, 5)} ${cleanPhone.slice(5)}`;
-      const generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
-      
-      pendingOtpState = {
-        phone: fullPhone,
-        countryCode: countryCode,
-        rawPhone: cleanPhone,
-        otp: generatedOtp,
-        confirmationResult: null,
-        expiresAt: Date.now() + 5 * 60 * 1000 // 5 minutes validity
-      };
-
-      console.log(`[Wealth Signal SMS Gateway / Firebase] Sent OTP ${generatedOtp} to ${fullPhone}`);
-
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve({
-            success: true,
-            phone: fullPhone,
-            otp: generatedOtp,
-            message: `OTP sent successfully to ${fullPhone}`
-          });
-        }, 500);
-      });
-    },
-
-    getPendingOtpState: function() {
-      return pendingOtpState;
-    },
-
-    verifyPhoneOtp: async function(enteredOtp) {
-      const cleanOtp = (enteredOtp || "").replace(/\s+/g, "");
-      if (!pendingOtpState.phone) {
-        throw new Error("No active OTP request found. Please request a new OTP.");
-      }
-      if (Date.now() > pendingOtpState.expiresAt) {
-        throw new Error("OTP has expired. Please request a fresh OTP.");
-      }
-      // Check entered OTP against generated OTP or universal test OTP '123456'
-      if (cleanOtp !== pendingOtpState.otp && cleanOtp !== "123456") {
-        throw new Error("Invalid OTP code entered. Please try again or use 123456.");
-      }
-
-      // Check if user already exists
-      let user = registeredUsers.find(u => u.phone && u.phone.replace(/[^0-9]/g, "") === pendingOtpState.rawPhone);
-      if (!user) {
-        user = {
-          id: "usr_phone_" + Date.now().toString(36),
-          name: `Trader +91-${pendingOtpState.rawPhone.slice(-4)}`,
-          email: `trader${pendingOtpState.rawPhone.slice(-4)}@wealthsignal.in`,
-          phone: pendingOtpState.phone,
-          provider: "phone",
-          avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=120&auto=format&fit=crop&q=80",
-          role: "Retail Market Trader",
-          tier: "Novice Trader",
-          joinedDate: new Date().toLocaleDateString("en-IN", { month: "short", year: "numeric" }),
-          isPro: false,
-          verified: true
-        };
-        registeredUsers.push(user);
-        localStorage.setItem(STORAGE_KEY_USERS, JSON.stringify(registeredUsers));
-      }
-
-      currentSession = user;
-      localStorage.setItem(STORAGE_KEY_SESSION, JSON.stringify(currentSession));
-      await syncUserToFirestore(user);
-      pendingOtpState = { phone: null, countryCode: "+91", rawPhone: null, otp: null, expiresAt: null, confirmationResult: null };
-      
-      notifyListeners();
-      return user;
-    },
-
-    // 2. GOOGLE SIGN-IN
+    // 1. GOOGLE SIGN-IN
     getGoogleAccounts: function() {
       return [
         {
