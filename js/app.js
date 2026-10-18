@@ -92,6 +92,22 @@ window.ArthashalaApp = window.ArthashalaApp || {};
 
  // --- Router Navigation ---
  function navigate(route) {
+    const authService = window.ArthashalaServices.auth;
+    const isAuth = authService ? authService.isAuthenticated() : false;
+
+    // Authentication-First Website Guard:
+    // When unauthenticated, users must see the Sign In / Register page
+    if (!isAuth && route !== "auth") {
+      route = "auth";
+    }
+
+    // Toggle auth-first styling on body
+    if (!isAuth || route === "auth") {
+      document.body.classList.add("auth-first-mode");
+    } else {
+      document.body.classList.remove("auth-first-mode");
+    }
+
  activeRoute = route;
  
  // Automatically close mobile drawer and dropdown on navigation
@@ -152,17 +168,15 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  if (user) {
  drawerAuthBtn.innerHTML = `${user.name.split(" ")[0]}`;
  drawerAuthBtn.onclick = () => {
- navigate('profile');
- closeMobileDrawer();
- };
+        navigate('profile');
+        closeMobileDrawer();
+      };
  } else {
  drawerAuthBtn.innerHTML = `Sign In`;
  drawerAuthBtn.onclick = () => {
- if (window.ArthashalaComponents.auth) {
- window.ArthashalaComponents.auth.openModal('signin');
- }
- closeMobileDrawer();
- };
+        navigate('auth');
+        closeMobileDrawer();
+      };
  }
  }
 
@@ -205,9 +219,9 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  } else {
  if (navLinkAuth) navLinkAuth.innerText = "Sign In";
  authContainer.innerHTML = `
- <button class="nav-signin-btn" onclick="window.ArthashalaComponents.auth.openModal('signin')">
- <span class="nav-item-tag">AUTH</span> Sign In
- </button>
+      <button class="nav-signin-btn" onclick="window.ArthashalaApp.navigate('auth')">
+        <span class="nav-item-tag">PORTAL</span> Sign In / Register
+      </button>
  `;
  }
  }
@@ -2533,17 +2547,17 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  closeMobileDrawer();
  },
  handleLogout: function() {
- if (confirm("Are you sure you want to sign out of Wealth Signal?")) {
- const menu = document.getElementById("nav-user-dropdown-menu");
- if (menu) menu.classList.remove("open");
- if (window.ArthashalaServices.auth) {
- window.ArthashalaServices.auth.logout();
- }
- showToast("Signed out successfully", "");
- updateGlobalHeader();
- navigate("home");
- }
- }
+      if (confirm("Are you sure you want to sign out of Wealth Signal?")) {
+        const menu = document.getElementById("nav-user-dropdown-menu");
+        if (menu) menu.classList.remove("open");
+        if (window.ArthashalaServices.auth) {
+          window.ArthashalaServices.auth.logout();
+        }
+        showToast("Signed out successfully. Authentication required to access terminal.", "info");
+        updateGlobalHeader();
+        navigate("auth");
+      }
+    }
  };
 
  // Close menus and dropdowns when clicking outside
@@ -2589,10 +2603,15 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  });
  }
 
- // Init application on load
- document.addEventListener("DOMContentLoaded", () => {
- initTickerTape();
- updateGlobalHeader();
- navigate("home");
- });
+  // Init application on load - Authentication-First check
+  document.addEventListener("DOMContentLoaded", () => {
+    initTickerTape();
+    updateGlobalHeader();
+    const isAuth = window.ArthashalaServices.auth ? window.ArthashalaServices.auth.isAuthenticated() : false;
+    if (isAuth) {
+      navigate("home");
+    } else {
+      navigate("auth");
+    }
+  });
 })();

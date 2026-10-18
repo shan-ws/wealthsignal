@@ -1,5 +1,5 @@
 // Wealth Signal Authentication Modal & Dedicated View Component
-// Supports Google Sign-In and Email/Password Login & Registration
+// Authentication-First Website: Sign In & Create Account (Register) with seamless redirection to Home Dashboard
 window.ArthashalaComponents = window.ArthashalaComponents || {};
 
 (function() {
@@ -7,92 +7,102 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
   let isSubmitting = false;
 
   function getTemplate(isDedicatedPage = false) {
-    const authService = window.ArthashalaServices.auth;
-    const currentUser = authService ? authService.getUser() : null;
+    const isSignIn = activeMode === "signin";
 
     return `
-      <div class="auth-card ${isDedicatedPage ? 'dedicated-page-card' : ''}">
+      <div class="auth-card ${isDedicatedPage ? 'dedicated-page-card' : ''}" id="auth-main-card">
         ${!isDedicatedPage ? `
           <button class="modal-close auth-close-btn" onclick="window.ArthashalaComponents.auth.closeModal()" title="Close">&times;</button>
         ` : ''}
 
-        <!-- Auth Header -->
+        <!-- Auth Brand Header -->
         <div class="auth-header">
           <div class="auth-logo-badge">
             <img src="assets/logo.jpg" alt="Wealth Signal" class="auth-logo-img" />
           </div>
           <h2 class="auth-title">
-            ${activeMode === "signin" ? "Welcome Back to Wealth Signal" : "Start Your Trading Journey"}
+            ${isSignIn ? "Sign In to Wealth Signal" : "Create Your Free Account"}
           </h2>
           <p class="auth-subtitle">
-            ${activeMode === "signin" 
-              ? "Access live TradingView charts, paper trading, and institutional analytics." 
-              : "Create your free simulation account with ₹10,00,000 risk-free demo capital."}
+            ${isSignIn 
+              ? "Access live NSE/BSE charts, simulated paper trading & institutional analytics." 
+              : "Register to unlock ₹10,00,000 risk-free virtual demo money. Zero real capital required."}
           </p>
         </div>
 
-        <!-- Mode Switcher (Sign In vs Create Account) -->
-        <div class="auth-mode-switch">
-          <button class="mode-btn ${activeMode === 'signin' ? 'active' : ''}" onclick="window.ArthashalaComponents.auth.setMode('signin', ${isDedicatedPage})">
+        <!-- Mode Switcher: Sign In vs Create Account (Register) Toggle -->
+        <div class="auth-mode-switch" role="tablist">
+          <button 
+            type="button"
+            class="mode-btn ${isSignIn ? 'active' : ''}" 
+            onclick="window.ArthashalaComponents.auth.setMode('signin', ${isDedicatedPage})"
+            role="tab"
+            aria-selected="${isSignIn}">
             Sign In
           </button>
-          <button class="mode-btn ${activeMode === 'signup' ? 'active' : ''}" onclick="window.ArthashalaComponents.auth.setMode('signup', ${isDedicatedPage})">
-            Create Account
+          <button 
+            type="button"
+            class="mode-btn ${!isSignIn ? 'active' : ''}" 
+            onclick="window.ArthashalaComponents.auth.setMode('signup', ${isDedicatedPage})"
+            role="tab"
+            aria-selected="${!isSignIn}">
+            Create Account (Register)
           </button>
         </div>
 
         <!-- Notification Banner Container -->
         <div id="auth-alert-box" class="auth-alert-box" style="display: none;"></div>
 
-        <!-- Social Google Fast-Track Button (Instant Access) -->
+        <!-- Fast-Track Google Sign-In Button -->
         <div class="auth-fasttrack-section">
-          <button class="google-auth-btn" onclick="window.ArthashalaComponents.auth.showGoogleChooser(${isDedicatedPage})">
+          <button type="button" class="google-auth-btn" onclick="window.ArthashalaComponents.auth.showGoogleChooser(${isDedicatedPage})">
             <svg class="google-icon" viewBox="0 0 24 24" width="20" height="20">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
               <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
               <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
               <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
             </svg>
-            <span>Continue with Google</span>
+            <span>${isSignIn ? "Continue with Google" : "Sign Up with Google"}</span>
           </button>
         </div>
 
         <div class="auth-divider">
-          <span>OR CONTINUE WITH EMAIL</span>
+          <span>${isSignIn ? "OR SIGN IN WITH EMAIL" : "OR REGISTER WITH EMAIL"}</span>
         </div>
 
-        <!-- Email & Password Form -->
+        <!-- Auth Form (Sign In / Register) -->
         <div class="auth-tab-panel">
           <form id="auth-email-form" onsubmit="window.ArthashalaComponents.auth.handleEmailAuth(event, ${isDedicatedPage})">
-            ${activeMode === 'signup' ? `
+            ${!isSignIn ? `
               <div class="form-group">
-                <label class="form-label">Full Name</label>
+                <label class="form-label" for="auth-signup-name">Full Name</label>
                 <input 
                   type="text" 
                   id="auth-signup-name" 
                   class="form-input" 
                   placeholder="e.g. Arjun Singhania" 
                   required 
+                  autofocus
                 />
               </div>
             ` : ''}
 
             <div class="form-group">
-              <label class="form-label">Email Address</label>
+              <label class="form-label" for="auth-email-input">Email Address</label>
               <input 
                 type="email" 
                 id="auth-email-input" 
                 class="form-input" 
                 placeholder="name@example.com" 
                 required 
-                autofocus
+                ${isSignIn ? 'autofocus' : ''}
               />
             </div>
 
             <div class="form-group">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                <label class="form-label" style="margin: 0;">Password</label>
-                ${activeMode === 'signin' ? `
+                <label class="form-label" for="auth-password-input" style="margin: 0;">Password</label>
+                ${isSignIn ? `
                   <a href="javascript:void(0)" class="forgot-link" onclick="window.ArthashalaComponents.auth.showForgotPassword()">Forgot?</a>
                 ` : ''}
               </div>
@@ -110,7 +120,7 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
                   👁
                 </button>
               </div>
-              ${activeMode === 'signup' ? `
+              ${!isSignIn ? `
                 <div class="pwd-strength-container">
                   <div class="pwd-strength-bar" id="pwd-strength-bar"></div>
                   <span class="pwd-strength-label" id="pwd-strength-label">Minimum 6 characters</span>
@@ -119,35 +129,35 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
             </div>
 
             <button type="submit" class="btn btn-primary auth-submit-btn" id="btn-email-submit">
-              ${isSubmitting ? 'Processing...' : (activeMode === 'signin' ? 'Sign In to Terminal →' : 'Create My Account →')}
+              ${isSubmitting ? 'Processing...' : (isSignIn ? 'Sign In to Dashboard →' : 'Register & Enter Dashboard →')}
             </button>
           </form>
         </div>
 
-        <!-- Quick 1-Click Demo Accounts -->
-        <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border-subtle); text-align: center;">
-          <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px; font-weight: 600; letter-spacing: 0.5px;">
-            QUICK DEMO ACCESS (1-CLICK)
+        <!-- Quick 1-Click Demo Accounts for Fast Evaluation -->
+        <div class="auth-demo-section" style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-subtle); text-align: center;">
+          <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px; font-weight: 700; letter-spacing: 0.8px;">
+            FAST EVALUATION • 1-CLICK DEMO LOGIN
           </div>
           <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-            <button type="button" class="btn btn-secondary btn-sm" style="font-size: 11.5px; padding: 6px 12px;" onclick="window.ArthashalaComponents.auth.quickLogin('usr_google_arjun', ${isDedicatedPage})">
-              Arjun (Pro Quant)
+            <button type="button" class="btn btn-secondary btn-sm" style="font-size: 11.5px; padding: 7px 14px; border-radius: 8px;" onclick="window.ArthashalaComponents.auth.quickLogin('usr_google_arjun', ${isDedicatedPage})">
+              ⚡ Arjun (Pro Quant)
             </button>
-            <button type="button" class="btn btn-secondary btn-sm" style="font-size: 11.5px; padding: 6px 12px;" onclick="window.ArthashalaComponents.auth.quickLogin('usr_email_rohit', ${isDedicatedPage})">
-              Rohit (Trader)
+            <button type="button" class="btn btn-secondary btn-sm" style="font-size: 11.5px; padding: 7px 14px; border-radius: 8px;" onclick="window.ArthashalaComponents.auth.quickLogin('usr_email_rohit', ${isDedicatedPage})">
+              ⚡ Rohit (Trader)
             </button>
           </div>
         </div>
 
         <!-- Security & Simulation Notice -->
         <div class="auth-footer-notice">
-          256-bit encrypted simulated environment. No real funds or broker credentials required.
+          SEBI / RBI educational simulated environment • ₹10,00,000 virtual capital • No real money risk
         </div>
       </div>
     `;
   }
 
-  // Google Account Chooser Modal Simulation / Popup Trigger
+  // Google Account Chooser Simulation / Firebase Fallback
   function renderGoogleChooserModal(isDedicatedPage = false) {
     const authService = window.ArthashalaServices.auth;
     const accounts = authService.getGoogleAccounts();
@@ -184,11 +194,10 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
                 <div class="google-account-name">${acc.name}</div>
                 <div class="google-account-email">${acc.email}</div>
               </div>
-              <span class="google-check-icon"></span>
+              <span class="google-check-icon">✓</span>
             </div>
           `).join('')}
 
-          <!-- Option to add custom Google account -->
           <div class="google-account-item" onclick="window.ArthashalaComponents.auth.promptCustomGoogleAccount(${isDedicatedPage})">
             <div class="google-account-avatar custom-plus">+</div>
             <div class="google-account-details">
@@ -199,7 +208,7 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
         </div>
 
         <div style="font-size: 11px; color: var(--text-muted); padding: 14px 18px; border-top: 1px solid var(--border-subtle); background: rgba(255,255,255,0.02); border-radius: 0 0 12px 12px;">
-          To continue, Google will share your name, email address, and profile picture with Wealth Signal.
+          Google will share your name, email address, and profile picture with Wealth Signal to authenticate your session.
         </div>
       </div>
     `;
@@ -210,13 +219,11 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
   }
 
   window.ArthashalaComponents.auth = {
-    // Open modal popup - supports openModal('signin'), openModal('signup'), or backward-compatible openModal('email', 'signin')
+    // Open modal popup
     openModal: function(arg1 = "signin", arg2 = null) {
       if (arg2) {
-        // called like openModal('email', 'signin') or openModal('phone', 'signin')
         activeMode = (arg2 === "signup") ? "signup" : "signin";
       } else {
-        // called like openModal('signin') or openModal('signup')
         activeMode = (arg1 === "signup") ? "signup" : "signin";
       }
 
@@ -231,8 +238,8 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
       modal.innerHTML = getTemplate(false);
       setTimeout(() => {
         modal.classList.add("open");
-        const emailInput = document.getElementById("auth-email-input") || document.getElementById("auth-signup-name");
-        if (emailInput) emailInput.focus();
+        const focusInput = document.getElementById(activeMode === "signup" ? "auth-signup-name" : "auth-email-input");
+        if (focusInput) focusInput.focus();
       }, 10);
     },
 
@@ -243,7 +250,7 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
       }
     },
 
-    // Render dedicated view inside page (#view-auth)
+    // Render dedicated view inside page container (#view-auth)
     renderAuthView: function(containerId = "view-auth") {
       const container = document.getElementById(containerId);
       if (!container) return;
@@ -255,6 +262,7 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
       `;
     },
 
+    // Toggle between Sign In and Create Account (Register)
     setMode: function(mode, isDedicatedPage = false) {
       activeMode = mode;
       if (isDedicatedPage) {
@@ -273,6 +281,22 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
       box.style.display = "block";
     },
 
+    // Redirection helper to Home Dashboard
+    redirectToHomeDashboard: function(userName, message, isDedicatedPage = false) {
+      if (!isDedicatedPage) {
+        this.closeModal();
+      }
+      
+      // Seamlessly navigate to Home Dashboard
+      if (window.ArthashalaApp && window.ArthashalaApp.navigate) {
+        window.ArthashalaApp.navigate("home");
+      }
+
+      if (window.ArthashalaApp && window.ArthashalaApp.showToast) {
+        window.ArthashalaApp.showToast(message || `Welcome to Wealth Signal, ${userName}! Dashboard unlocked.`, "success");
+      }
+    },
+
     // Google Handlers
     showGoogleChooser: function(isDedicatedPage = false) {
       if (window.wealthSignalFirebase && window.wealthSignalFirebase.auth) {
@@ -280,11 +304,8 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
         provider.setCustomParameters({ prompt: 'select_account' });
         window.wealthSignalFirebase.auth.signInWithPopup(provider)
           .then(result => {
-            if (!isDedicatedPage) this.closeModal();
-            window.ArthashalaApp.navigate("profile");
-            if (window.ArthashalaApp.showToast) {
-              window.ArthashalaApp.showToast(`Signed in via Google as ${result.user.displayName || result.user.email}!`, "success");
-            }
+            const displayName = result.user.displayName || result.user.email.split("@")[0];
+            this.redirectToHomeDashboard(displayName, `Signed in via Google as ${displayName}! Welcome to Wealth Signal.`, isDedicatedPage);
           })
           .catch(err => {
             console.warn("[Firebase Google Auth Popup]", err);
@@ -292,10 +313,10 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
               return;
             }
             if (err.code === "auth/unauthorized-domain") {
-              this.showAlert("Domain not authorized in Firebase! Please add your Vercel domain in Firebase Console > Authentication > Settings > Authorized Domains.", false);
+              this.showAlert("Domain not authorized in Firebase! Please add your Vercel domain in Firebase Console.", false);
               return;
             }
-            // If popup is blocked or fails, show quick chooser simulation
+            // Fallback to Google Chooser
             renderGoogleChooserModal(isDedicatedPage);
           });
       } else {
@@ -313,11 +334,7 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
 
       window.ArthashalaServices.auth.loginWithGoogle(target)
         .then(user => {
-          if (!isDedicatedPage) this.closeModal();
-          window.ArthashalaApp.navigate("profile");
-          if (window.ArthashalaApp.showToast) {
-            window.ArthashalaApp.showToast(`Signed in via Google as ${user.name}!`, "success");
-          }
+          this.redirectToHomeDashboard(user.name, `Signed in via Google as ${user.name}! Welcome to Wealth Signal.`, isDedicatedPage);
         });
     },
 
@@ -338,12 +355,11 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
 
       window.ArthashalaServices.auth.loginWithGoogle(customAcc)
         .then(user => {
-          if (!isDedicatedPage) this.closeModal();
-          window.ArthashalaApp.navigate("profile");
+          this.redirectToHomeDashboard(user.name, `Signed in as ${user.name}! Welcome to Wealth Signal.`, isDedicatedPage);
         });
     },
 
-    // Email Handlers
+    // Email Handlers (Sign In & Register)
     handleEmailAuth: function(event, isDedicatedPage = false) {
       event.preventDefault();
       const emailInput = document.getElementById("auth-email-input");
@@ -356,36 +372,34 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
 
       isSubmitting = true;
       const btn = document.getElementById("btn-email-submit");
-      if (btn) btn.innerHTML = `<span class="spinner-inline"></span> Processing...`;
+      if (btn) btn.innerHTML = `<span class="spinner-inline"></span> Authenticating...`;
 
       if (activeMode === "signup") {
         window.ArthashalaServices.auth.signupWithEmail(name, email, password)
           .then(user => {
             isSubmitting = false;
-            this.showAlert(`Account created! Welcome, ${user.name}.`, true);
+            this.showAlert(`Account created successfully! Redirecting to Home Dashboard...`, true);
             setTimeout(() => {
-              if (!isDedicatedPage) this.closeModal();
-              window.ArthashalaApp.navigate("profile");
-            }, 600);
+              this.redirectToHomeDashboard(user.name, `Welcome to Wealth Signal, ${user.name}! Your ₹10,00,000 demo capital is ready.`, isDedicatedPage);
+            }, 500);
           })
           .catch(err => {
             isSubmitting = false;
-            if (btn) btn.innerHTML = 'Create My Account →';
+            if (btn) btn.innerHTML = 'Register & Enter Dashboard →';
             this.showAlert(err.message, false);
           });
       } else {
         window.ArthashalaServices.auth.loginWithEmail(email, password)
           .then(user => {
             isSubmitting = false;
-            this.showAlert(`Welcome back, ${user.name}!`, true);
+            this.showAlert(`Welcome back, ${user.name}! Redirecting to Home Dashboard...`, true);
             setTimeout(() => {
-              if (!isDedicatedPage) this.closeModal();
-              window.ArthashalaApp.navigate("profile");
-            }, 600);
+              this.redirectToHomeDashboard(user.name, `Welcome back, ${user.name}! Home Dashboard unlocked.`, isDedicatedPage);
+            }, 500);
           })
           .catch(err => {
             isSubmitting = false;
-            if (btn) btn.innerHTML = 'Sign In to Terminal →';
+            if (btn) btn.innerHTML = 'Sign In to Dashboard →';
             this.showAlert(err.message, false);
           });
       }
@@ -435,16 +449,12 @@ window.ArthashalaComponents = window.ArthashalaComponents || {};
       }
     },
 
-    // Quick Demo Sign In
+    // Fast 1-Click Demo Login with immediate Home Dashboard redirection
     quickLogin: function(accountId, isDedicatedPage = false) {
       const user = window.ArthashalaServices.auth.switchDemoAccount(accountId);
-      this.showAlert(`Switched to demo user: ${user.name}`, true);
+      this.showAlert(`Demo account verified: ${user.name}. Redirecting to Home Dashboard...`, true);
       setTimeout(() => {
-        if (!isDedicatedPage) this.closeModal();
-        window.ArthashalaApp.navigate("profile");
-        if (window.ArthashalaApp.showToast) {
-          window.ArthashalaApp.showToast(`Signed in as ${user.name}`, "success");
-        }
+        this.redirectToHomeDashboard(user.name, `Signed in as ${user.name}! Home Dashboard unlocked.`, isDedicatedPage);
       }, 400);
     }
   };

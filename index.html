@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/components.css" />
 </head>
-<body>
+<body class="auth-first-mode">
 
   <!-- Regulatory & Educational Disclaimer Top Banner -->
   <div class="regulatory-banner">
@@ -319,7 +319,7 @@
 
   <!-- Main View Container for Routes -->
   <main class="app-container">
-    <section class="route-view active" id="view-home"></section>
+    <section class="route-view" id="view-home"></section>
     <section class="route-view" id="view-markets"></section>
     <section class="route-view" id="view-simulator"></section>
     <section class="route-view" id="view-portfolio"></section>
@@ -331,12 +331,12 @@
     <section class="route-view" id="view-pricing"></section>
     <section class="route-view" id="view-profile"></section>
     <section class="route-view" id="view-admin"></section>
-    <section class="route-view" id="view-auth"></section>
+    <section class="route-view active" id="view-auth"></section>
   </main>
 
   <!-- Platform Footer -->
   <footer style="background: var(--bg-surface); border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px; font-size: 12px; color: var(--text-muted);">
-    <div style="max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; margin-bottom: 30px;">
+    <div class="footer-grid" style="max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; margin-bottom: 30px;">
       <div>
         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
           <img src="assets/logo.jpg" alt="Wealth Signal Logo" style="width: 32px; height: 32px; border-radius: 6px; object-fit: cover; border: 1px solid rgba(255,255,255,0.15);" />

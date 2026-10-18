@@ -1552,27 +1552,58 @@ input:checked + .toggle-slider:before {
 }
 
 /* ==========================================================================
-   AUTHENTICATION SYSTEM (Phone OTP, Google, Email & Navbar Dropdown)
+/* ==========================================================================
+   AUTHENTICATION-FIRST PLATFORM ARCHITECTURE
    ========================================================================== */
+
+body.auth-first-mode {
+  background: radial-gradient(circle at 50% 18%, rgba(56, 189, 248, 0.08) 0%, var(--bg-body) 60%) !important;
+}
+
+body.auth-first-mode .market-ticker-tape,
+body.auth-first-mode .ticker-tape,
+body.auth-first-mode .nav-menu,
+body.auth-first-mode .virtual-balance-chip,
+body.auth-first-mode .user-status-pill,
+body.auth-first-mode .mobile-bottom-nav,
+body.auth-first-mode .mobile-hamburger-btn {
+  display: none !important;
+}
+
+body.auth-first-mode .nav-actions {
+  margin-left: auto;
+}
+
+body.auth-first-mode .footer-grid {
+  display: none !important;
+}
+
+body.auth-first-mode footer {
+  padding: 24px 16px !important;
+  background: transparent !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
 
 .auth-page-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 220px);
-  padding: 40px 16px;
+  min-height: calc(100vh - 180px);
+  padding: 40px 16px 60px;
+  position: relative;
 }
 
 .auth-card {
-  background: linear-gradient(165deg, #111827 0%, #0c121e 100%);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  background: linear-gradient(165deg, rgba(17, 24, 39, 0.95) 0%, rgba(12, 18, 30, 0.98) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.28);
   border-radius: 20px;
   width: 100%;
   max-width: 480px;
-  padding: 32px 28px;
+  padding: 36px 30px;
   position: relative;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 242, 254, 0.08);
-  animation: authCardIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.85), 0 0 45px rgba(56, 189, 248, 0.1);
+  backdrop-filter: blur(16px);
+  animation: authCardIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .dedicated-page-card {
@@ -1629,7 +1660,7 @@ input:checked + .toggle-slider:before {
 }
 
 .auth-title {
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 800;
   color: #ffffff;
   letter-spacing: -0.3px;
@@ -1637,21 +1668,22 @@ input:checked + .toggle-slider:before {
 }
 
 .auth-subtitle {
-  font-size: 12.5px;
+  font-size: 13px;
   color: var(--text-secondary);
   line-height: 1.45;
-  max-width: 380px;
+  max-width: 390px;
   margin: 0 auto;
 }
 
-/* Mode Switcher */
+/* Mode Switcher: Sign In vs Create Account */
 .auth-mode-switch {
   display: flex;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-subtle);
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 4px;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
+  gap: 4px;
 }
 
 .mode-btn {
@@ -1659,18 +1691,28 @@ input:checked + .toggle-slider:before {
   background: transparent;
   border: none;
   color: var(--text-secondary);
-  padding: 8px 12px;
-  border-radius: 7px;
+  padding: 10px 14px;
+  border-radius: 8px;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.mode-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .mode-btn.active {
-  background: rgba(56, 189, 248, 0.15);
+  background: rgba(56, 189, 248, 0.16);
+  border: 1px solid rgba(56, 189, 248, 0.45);
   color: #38bdf8;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
 /* Alert Box */
