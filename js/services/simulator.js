@@ -366,7 +366,7 @@ window.ArthashalaServices = window.ArthashalaServices || {};
       });
     },
 
-    // Reset account to initial ₹10,00,000
+    // Reset account to initial balance
     resetAccount: function(amount = INITIAL_BALANCE) {
       balance = amount;
       positions = [];
@@ -374,6 +374,26 @@ window.ArthashalaServices = window.ArthashalaServices || {};
       tradeHistory = [];
       saveState();
       return true;
+    },
+
+    // Dual Currency Toggle: INR vs USD
+    getCurrency: function() {
+      return localStorage.getItem("arthashala_sim_currency") || "INR";
+    },
+
+    setCurrency: function(curr) {
+      const selected = curr === "USD" ? "USD" : "INR";
+      localStorage.setItem("arthashala_sim_currency", selected);
+      return selected;
+    },
+
+    formatValue: function(amount) {
+      const curr = this.getCurrency();
+      if (curr === "USD") {
+        const inUSD = amount / 84.0;
+        return (inUSD < 0 ? "-$" : "$") + Math.abs(inUSD).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+      return (amount < 0 ? "-₹" : "₹") + Math.abs(amount).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
   };
 })();

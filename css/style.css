@@ -1,53 +1,55 @@
 /* ==========================================================================
-   WEALTH SIGNAL — Institutional Fintech Design System (Luxury Brown & White Edition)
-   Crafted for Desktop & Mobile Web App Excellence
+   WEALTH SIGNAL — Modern Dark Navy & Pale-Blue Fintech Design System
+   AI-Powered Financial Intelligence & Education Platform
    ========================================================================== */
 
 :root {
-  /* Color Palette: Deep Roasted Espresso, Warm Mocha, Rich Bronze & Crisp White */
-  --bg-base: #120e0b;
-  --bg-surface: #18130f;
-  --bg-card: #201914;
-  --bg-card-hover: #2a211b;
-  --bg-card-elevated: #342921;
-  --bg-input: rgba(24, 19, 15, 0.95);
+  /* Color Palette: Dark Navy, Deep Slate & Midnight Surface */
+  --bg-base: #060913;
+  --bg-surface: #0b1120;
+  --bg-card: #0f172a;
+  --bg-card-hover: #16223d;
+  --bg-card-elevated: #1e293b;
+  --bg-input: #0b1329;
 
-  /* Subtle Warm Linen & Ivory Borders */
-  --border-subtle: rgba(235, 222, 210, 0.12);
-  --border-subtle-hover: rgba(235, 222, 210, 0.24);
-  --border-medium: rgba(235, 222, 210, 0.2);
-  --border-focus: #c59b6d;
+  /* Subtle Pale-Blue & Slate Glass Borders */
+  --border-subtle: rgba(56, 189, 248, 0.12);
+  --border-subtle-hover: rgba(56, 189, 248, 0.28);
+  --border-medium: rgba(56, 189, 248, 0.24);
+  --border-focus: #38bdf8;
 
-  /* Typography Hierarchy: Crisp Pure White & Warm Linen Cream */
+  /* Typography Hierarchy: Pure White & Slate Hierarchy */
   --text-primary: #ffffff;
-  --text-secondary: #e5ded6;
-  --text-muted: #a69789;
-  --text-inverse: #120e0b;
+  --text-secondary: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-inverse: #060913;
 
-  /* Market Performance Colors (Refined Financial Tones) */
-  --emerald: #34d399;
-  --emerald-dim: rgba(52, 211, 153, 0.14);
-  --emerald-border: rgba(52, 211, 153, 0.35);
-  --emerald-glow: rgba(52, 211, 153, 0.22);
+  /* Market Performance Colors */
+  --emerald: #10b981;
+  --emerald-dim: rgba(16, 185, 129, 0.14);
+  --emerald-border: rgba(16, 185, 129, 0.35);
+  --emerald-glow: rgba(16, 185, 129, 0.22);
 
-  --rose: #f87171;
-  --rose-dim: rgba(248, 113, 113, 0.14);
-  --rose-border: rgba(248, 113, 113, 0.35);
-  --rose-glow: rgba(248, 113, 113, 0.22);
+  --rose: #f43f5e;
+  --rose-dim: rgba(244, 63, 94, 0.14);
+  --rose-border: rgba(244, 63, 94, 0.35);
+  --rose-glow: rgba(244, 63, 94, 0.22);
 
-  /* Brand Accents: Warm Bronze, Camel & Champagne Gold */
-  --cyan: #c59b6d;
-  --cyan-dim: rgba(197, 155, 109, 0.15);
-  --cyan-border: rgba(197, 155, 109, 0.4);
-  --cyan-glow: rgba(197, 155, 109, 0.25);
+  /* Brand Accents: Electric Pale-Blue, Cyan & Sky */
+  --cyan: #38bdf8;
+  --cyan-dim: rgba(56, 189, 248, 0.14);
+  --cyan-border: rgba(56, 189, 248, 0.38);
+  --cyan-glow: rgba(56, 189, 248, 0.28);
+  --pale-blue: #7dd3fc;
+  --blue-accent: #0ea5e9;
 
-  --amber: #d97706;
-  --amber-dim: rgba(217, 119, 6, 0.14);
-  --amber-border: rgba(217, 119, 6, 0.35);
+  --amber: #f59e0b;
+  --amber-dim: rgba(245, 158, 11, 0.14);
+  --amber-border: rgba(245, 158, 11, 0.35);
 
-  --purple: #a48268;
-  --purple-dim: rgba(164, 130, 104, 0.15);
-  --purple-border: rgba(164, 130, 104, 0.35);
+  --purple: #818cf8;
+  --purple-dim: rgba(129, 140, 248, 0.14);
+  --purple-border: rgba(129, 140, 248, 0.35);
 
   /* Typography Stack */
   --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -65,13 +67,13 @@
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
   --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.6);
   --shadow-lg: 0 14px 34px -4px rgba(0, 0, 0, 0.75);
-  --shadow-glow-emerald: 0 0 24px rgba(52, 211, 153, 0.18);
-  --shadow-glow-cyan: 0 0 24px rgba(197, 155, 109, 0.22);
+  --shadow-glow-emerald: 0 0 24px rgba(16, 185, 129, 0.2);
+  --shadow-glow-cyan: 0 0 24px rgba(56, 189, 248, 0.25);
 
   /* Glassmorphism */
-  --glass-bg: rgba(18, 14, 11, 0.9);
-  --glass-card: rgba(24, 19, 15, 0.85);
-  --glass-border: rgba(235, 222, 210, 0.12);
+  --glass-bg: rgba(11, 17, 32, 0.88);
+  --glass-card: rgba(15, 23, 42, 0.82);
+  --glass-border: rgba(56, 189, 248, 0.14);
 
   /* Layout Constants */
   --header-height: 64px;
@@ -97,9 +99,9 @@ html {
 body {
   background-color: var(--bg-base);
   background-image:
-    radial-gradient(circle at 50% -10%, rgba(197, 155, 109, 0.12) 0%, transparent 60%),
-    radial-gradient(circle at 95% 20%, rgba(197, 155, 109, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 5% 80%, rgba(164, 130, 104, 0.04) 0%, transparent 40%);
+    radial-gradient(circle at 50% -10%, rgba(56, 189, 248, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 95% 20%, rgba(14, 165, 233, 0.07) 0%, transparent 40%),
+    radial-gradient(circle at 5% 80%, rgba(99, 102, 241, 0.05) 0%, transparent 40%);
   background-attachment: fixed;
   color: var(--text-primary);
   font-family: var(--font-main);

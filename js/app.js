@@ -95,14 +95,8 @@ window.ArthashalaApp = window.ArthashalaApp || {};
     const authService = window.ArthashalaServices.auth;
     const isAuth = authService ? authService.isAuthenticated() : false;
 
-    // Authentication-First Website Guard:
-    // When unauthenticated, users must see the Sign In / Register page
-    if (!isAuth && route !== "auth") {
-      route = "auth";
-    }
-
     // Toggle auth-first styling on body
-    if (!isAuth || route === "auth") {
+    if (route === "auth") {
       document.body.classList.add("auth-first-mode");
     } else {
       document.body.classList.remove("auth-first-mode");
@@ -138,6 +132,12 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  if (route === "home") renderHomeView();
  else if (route === "markets") renderMarketsView();
  else if (route === "simulator") renderSimulatorView();
+ else if (route === "calculators") { if (window.ArthashalaViews) window.ArthashalaViews.renderCalculatorsView(); }
+ else if (route === "simulators") { if (window.ArthashalaViews) window.ArthashalaViews.renderSimulatorsView(); }
+ else if (route === "decision-lab") { if (window.ArthashalaViews) window.ArthashalaViews.renderDecisionLabView(); }
+ else if (route === "macro-map") { if (window.ArthashalaViews) window.ArthashalaViews.renderMacroMapView(); }
+ else if (route === "scam-academy") { if (window.ArthashalaViews) window.ArthashalaViews.renderScamAcademyView(); }
+ else if (route === "passport") { if (window.ArthashalaViews) window.ArthashalaViews.renderPassportView(); }
  else if (route === "portfolio") renderPortfolioView();
  else if (route === "journal") renderJournalView();
  else if (route === "backtesting") renderBacktestingView();
@@ -380,6 +380,80 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  </div>
  </div>
 
+ <!-- Market Sentiment & Fear/Greed Index -->
+ <div class="sentiment-meter-card">
+   <div style="display: flex; align-items: center; gap: 20px;">
+     <div class="sentiment-dial-container">
+       <div class="sentiment-semi-circle"></div>
+       <div class="sentiment-inner-mask"></div>
+       <div class="sentiment-needle" style="transform: translateX(-50%) rotate(54deg);"></div>
+     </div>
+     <div>
+       <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px;">Market Sentiment Gauge</div>
+       <div style="font-size: 24px; font-weight: 800; color: var(--emerald); display: flex; align-items: center; gap: 8px;">
+         <span>68</span> • <span>Greed</span>
+       </div>
+       <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">
+         Bulls in control: Domestic liquidity & institutional equity accumulation.
+       </div>
+     </div>
+   </div>
+   <div style="display: flex; gap: 16px; border-left: 1px solid var(--border-subtle); padding-left: 20px;">
+     <div>
+       <div style="font-size: 11px; color: var(--text-muted);">Yesterday</div>
+       <div style="font-size: 14px; font-weight: 700; color: #fff;">65</div>
+     </div>
+     <div>
+       <div style="font-size: 11px; color: var(--text-muted);">Last Week</div>
+       <div style="font-size: 14px; font-weight: 700; color: #fff;">58</div>
+     </div>
+     <div>
+       <div style="font-size: 11px; color: var(--text-muted);">Last Month</div>
+       <div style="font-size: 14px; font-weight: 700; color: #fff;">44</div>
+     </div>
+   </div>
+ </div>
+
+ <!-- AI Financial News Analysis Wire -->
+ <div style="margin-bottom: 24px;">
+   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+     <div>
+       <h3 style="font-size: 18px; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 8px;">
+         <span style="color: var(--cyan);">⚡</span> AI Financial News Intelligence
+       </h3>
+       <p style="font-size: 12px; color: var(--text-muted);">Curated real-time financial wire with instant AI transmission breakdowns</p>
+     </div>
+     <button class="btn btn-outline btn-sm" onclick="window.ArthashalaApp.navigate('finance-ai')">Ask AI About News</button>
+   </div>
+
+   <div class="news-feed-grid">
+     ${(window.ArthashalaServices.newsAnalysis ? window.ArthashalaServices.newsAnalysis.getAllNews() : []).slice(0, 3).map(n => `
+       <div class="news-article-card" onclick="window.ArthashalaViews.openExplainNewsModal('${n.id}')">
+         <div>
+           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+             <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">${n.category}</span>
+             <span class="news-tag-sentiment ${n.sentiment === 'bullish' ? 'news-tag-bullish' : n.sentiment === 'bearish' ? 'news-tag-bearish' : 'news-tag-neutral'}">
+               ${n.sentiment}
+             </span>
+           </div>
+           <h4 style="font-size: 13.5px; font-weight: 700; color: #fff; line-height: 1.4; margin-bottom: 8px;">
+             ${n.title}
+           </h4>
+           <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+             ${n.summary.slice(0, 110)}...
+           </p>
+         </div>
+         <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 10px;">
+           <span style="font-size: 11px; color: var(--text-muted);">${n.timestamp}</span>
+           <span style="font-size: 11px; font-weight: 700; color: var(--cyan); display: flex; align-items: center; gap: 4px;">
+             Explain with AI ➔
+           </span>
+         </div>
+       </div>
+     `).join('')}
+   </div>
+ </div>
+
  <!-- Quick Action Jump Grid -->
  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px;">
  <div class="card" style="border-left: 3px solid var(--emerald);">
@@ -404,6 +478,30 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  Test 9/21 EMA Golden Cross, RSI Mean Reversion, and Supertrend strategies on historical Indian market bars.
  </p>
  <button class="btn btn-secondary btn-sm" onclick="window.ArthashalaApp.navigate('backtesting')">Run Strategy Test</button>
+ </div>
+
+ <div class="card" style="border-left: 3px solid var(--purple);">
+ <div class="card-title">Financial Calculators Suite</div>
+ <p style="font-size: 13px; color: var(--text-secondary); margin: 8px 0 16px;">
+ High-precision calculators for SIP with Step-Up, EMI Prepayment, Compound Interest, and Budget 2024 Income Tax.
+ </p>
+ <button class="btn btn-outline btn-sm" onclick="window.ArthashalaApp.navigate('calculators')">Launch Calculators</button>
+ </div>
+
+ <div class="card" style="border-left: 3px solid #0ea5e9;">
+ <div class="card-title">Decision Lab & Scam Shield</div>
+ <p style="font-size: 13px; color: var(--text-secondary); margin: 8px 0 16px;">
+ Test real-world market crash dilemmas, spot WhatsApp pump-and-dump scams, and verify your Skill Passport.
+ </p>
+ <button class="btn btn-outline btn-sm" onclick="window.ArthashalaApp.navigate('decision-lab')">Enter Decision Lab</button>
+ </div>
+
+ <div class="card" style="border-left: 3px solid var(--emerald);">
+ <div class="card-title">Global Economic Ripple Map</div>
+ <p style="font-size: 13px; color: var(--text-secondary); margin: 8px 0 16px;">
+ Interactive visual network tracing how US Fed rate hikes, crude oil shocks, and RBI repo rate cuts ripple through markets.
+ </p>
+ <button class="btn btn-outline btn-sm" onclick="window.ArthashalaApp.navigate('macro-map')">Explore Macro Map</button>
  </div>
  </div>
 
@@ -1644,6 +1742,20 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  </div>
  </div>
 
+ <!-- Explanation Level Selector Bar -->
+ <div style="background: rgba(15, 23, 42, 0.7); border-bottom: 1px solid var(--border-subtle); padding: 8px 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+   <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+     <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Depth Level:</span>
+     <button class="pill-btn ${tutor.getLevel() === 'beginner' ? 'active' : ''}" onclick="window.ArthashalaApp.setAiLevel('beginner')">🔰 Beginner (ELI5)</button>
+     <button class="pill-btn ${tutor.getLevel() === 'intermediate' ? 'active' : ''}" onclick="window.ArthashalaApp.setAiLevel('intermediate')">📘 Intermediate</button>
+     <button class="pill-btn ${tutor.getLevel() === 'advanced' ? 'active' : ''}" onclick="window.ArthashalaApp.setAiLevel('advanced')">⚡ Advanced (Quant)</button>
+     <button class="pill-btn ${tutor.getLevel() === 'institutional' ? 'active' : ''}" onclick="window.ArthashalaApp.setAiLevel('institutional')">🏛️ Institutional</button>
+   </div>
+   <div style="font-size: 11px; color: var(--cyan); display: flex; align-items: center; gap: 4px;">
+     <span>🔊 Voice Synthesis Ready</span>
+   </div>
+ </div>
+
  <!-- Messages Scroll Box -->
  <div class="ai-messages-scroll" id="ai-messages-container">
  ${history.map((m, idx) => `
@@ -1685,6 +1797,9 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  → ${m.simulatorAction.actionText}
  </button>
  ` : ''}
+ <button class="btn btn-secondary btn-sm" onclick="window.ArthashalaServices.aiTutor.speakText(this.closest('.chat-bubble').innerText)" title="Read aloud via Speech Synthesis">
+ 🔊 Listen
+ </button>
  <button class="btn btn-secondary btn-sm" onclick="window.ArthashalaApp.copyAiMessage(${idx})" title="Copy answer text">
  Copy Answer
  </button>
@@ -2310,6 +2425,12 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  renderFinanceAIView();
  updateGlobalHeader();
  },
+ setAiLevel: function(lvl) {
+   if (window.ArthashalaServices.aiTutor) {
+     window.ArthashalaServices.aiTutor.setLevel(lvl);
+     renderFinanceAIView();
+   }
+ },
  setAiCategory: function(cat) {
  window.ArthashalaServices.aiTutor.setCategory(cat);
  renderFinanceAIView();
@@ -2607,11 +2728,6 @@ window.ArthashalaApp = window.ArthashalaApp || {};
   document.addEventListener("DOMContentLoaded", () => {
     initTickerTape();
     updateGlobalHeader();
-    const isAuth = window.ArthashalaServices.auth ? window.ArthashalaServices.auth.isAuthenticated() : false;
-    if (isAuth) {
-      navigate("home");
-    } else {
-      navigate("auth");
-    }
+    navigate("home");
   });
 })();

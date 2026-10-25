@@ -58,21 +58,27 @@ window.ArthashalaServices = window.ArthashalaServices || {};
     registeredUsers = [];
   }
 
-  // Active session - starts as null (Logged Out) by default
+  // Active session - default to guest session so user can explore all features immediately
   let currentSession = null;
   try {
     const saved = localStorage.getItem(STORAGE_KEY_SESSION);
     if (saved) {
-      const parsed = JSON.parse(saved);
-      // Clean up legacy mock sessions so visitors start logged out
-      if (parsed && !["usr_google_arjun", "usr_phone_priya", "usr_email_priya", "usr_email_rohit"].includes(parsed.id)) {
-        currentSession = parsed;
-      } else {
-        localStorage.removeItem(STORAGE_KEY_SESSION);
-        currentSession = null;
-      }
+      currentSession = JSON.parse(saved);
     } else {
-      currentSession = null;
+      currentSession = {
+        id: "usr_guest_demo",
+        name: "Guest Learner",
+        email: "demo@wealthsignal.io",
+        provider: "guest",
+        avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=120&auto=format&fit=crop&q=80",
+        role: "Financial Intelligence Scholar",
+        tier: "Novice Scholar",
+        joinedDate: "Today",
+        isPro: false,
+        verified: true,
+        isGuest: true
+      };
+      localStorage.setItem(STORAGE_KEY_SESSION, JSON.stringify(currentSession));
     }
   } catch (e) {
     currentSession = null;

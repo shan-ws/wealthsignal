@@ -1,96 +1,106 @@
-# Wealth Signal | Financial Education & Market Simulation Platform
+# Wealth Signal | AI-Powered Financial Intelligence & Education Platform
 
 <div align="center">
   <img src="assets/logo.jpg" alt="Wealth Signal Logo" width="120" style="border-radius: 12px; margin-bottom: 16px;" />
   <p><em>“Don’t just follow the market. Learn how it works.”</em></p>
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-  [![Platform](https://img.shields.io/badge/Platform-Web-emerald.svg)](https://shan-ws.github.io/wealthsignal/)
-  [![Demo Capital](https://img.shields.io/badge/Virtual%20Capital-₹10%2C00%2C000-brightgreen.svg)]()
-  [![Compliance](https://img.shields.io/badge/Notice-SEBI%20%2F%20RBI%20Educational-orange.svg)]()
+  [![Platform](https://img.shields.io/badge/Platform-Web-0ea5e9.svg)](https://shan-ws.github.io/wealthsignal/)
+  [![Virtual Capital](https://img.shields.io/badge/Virtual%20Capital-₹10%2C00%2C000%20%2F%20$50%2C000-brightgreen.svg)]()
+  [![Compliance](https://img.shields.io/badge/Notice-SEBI%20%2F%20RBI%20%2F%20SEC%20Educational-orange.svg)]()
 
-  ### 🌐 **[Live Demo — Open Platform](https://shan-ws.github.io/wealthsignal/)**
+  ### 🌐 **[Live Platform — Open Access Ecosystem](https://shan-ws.github.io/wealthsignal/)**
 </div>
 
 ---
 
 ## 📌 About Wealth Signal
 
-**Wealth Signal** (Arthashala) is India's premier dark-mode financial education and real-time market simulation platform. It equips Indian retail investors, students, and aspiring traders with quantitative risk management, technical charting patterns, and fundamental analysis skills using **₹10,00,000 in risk-free virtual demo capital** before risking real money in the markets.
+**Wealth Signal** is an institutional-grade, AI-powered Financial Intelligence and Market Education Platform. Engineered for aspiring investors, retail traders, and finance students, Wealth Signal bridges the gap between theoretical knowledge and real-world execution.
+
+Using **₹10,00,000 / $50,000 in risk-free virtual capital**, users can simulate multi-asset trades, backtest historical quantitative strategies, navigate high-stakes behavioral decision dilemmas, model personal and business lifecycles, and earn a verified Financial Intelligence Skill Passport—all within a modern dark navy fintech interface.
 
 ---
 
-## ✨ Key Features
+## ✨ Core Pillars & Platform Features
 
-### 1. 📈 Virtual Trading Simulator
-- **₹10,00,000 Demo Money:** Practice trading NSE/BSE equities, derivatives, and commodities without financial risk.
-- **Order Types:** Execute Market Orders, Limit Orders, and configure Stop-Loss (SL) & Target (TP) brackets.
-- **Product Types:** Support for Intraday (MIS) with automatic square-off tracking and Delivery (CNC).
+### 1. 🤖 AI Finance Tutor (Beginner to Institutional)
+- **4 Explanation Depth Levels:**
+  - **Beginner (ELI5):** Intuitive analogies and simplified plain-English explanations.
+  - **Intermediate:** Practical retail rules, portfolio ratios, and real-world examples.
+  - **Advanced (Quant):** Quantitative formulas, Options Greeks ($\Delta, \Gamma, \Theta, \nu$), Damodaran DCF models, and volatility metrics.
+  - **Institutional:** Citations directly mapped to official regulatory circulars from **SEBI**, **RBI**, **US SEC**, **BIS (Basel III)**, and **CBOE**.
+- **Voice Synthesis:** Native Text-to-Speech audio reader for listening to complex financial concepts.
+- **Hinglish Mode:** Conversational bilingual guidance tailored for Indian investors.
 
-### 2. 📊 TradingView Interactive Charting
-- Integrated official TradingView technical charts (`tv.js`).
-- Complete technical analysis suite: Candlesticks, Heikin Ashi, Volume, RSI, MACD, Bollinger Bands, and custom indicators.
+### 2. 📊 Real-Time Financial Market Dashboard
+- **Multi-Asset Coverage:**
+  - **Equities:** Top Indian blue-chips (Reliance, TCS, HDFC Bank, Infosys, Tata Motors) and US Tech Giants (Apple, Nvidia, Microsoft, Tesla).
+  - **Indices:** Nifty 50, Sensex, Bank Nifty, S&P 500, Nasdaq 100.
+  - **Forex:** USD/INR, EUR/INR, GBP/INR, EUR/USD, USD/JPY.
+  - **Cryptocurrencies:** Bitcoin (BTC), Ethereum (ETH), Solana (SOL).
+  - **Bonds & Fixed Income:** India 10Y Benchmark Sovereign G-Sec, US 10Y Treasury, Sovereign Gold Bonds (SGB).
+  - **Commodities:** MCX Gold, MCX Silver, Brent Crude Oil, Natural Gas, Copper.
+- **Interactive Technical Charting:** Integrated official TradingView chart library (`tv.js`) and high-performance custom Canvas charting engine with EMA9, EMA21, Bollinger Bands, RSI, and Volume overlays.
 
-### 3. 💼 Comprehensive Portfolio Analytics
-- Real-time P&L (Unrealized & Realized), capital utilization, and margin meters.
-- Quantitative metrics: **Sharpe Ratio**, Win/Loss ratio, maximum drawdown, and sector distribution.
+### 3. ⚡ AI Financial News & Sentiment Intelligence
+- **Market Sentiment Meter:** Real-time Fear & Greed Index (0–100) with dynamic radial pointer gauge.
+- **Curated Financial News Wire:** Breaking macro and market events tagged by sentiment (Bullish, Bearish, Neutral).
+- **"Explain with AI" Deep-Dives:** Instant four-point breakdown on any news event:
+  1. *What Happened* (Concise summary)
+  2. *Why It Matters* (Economic transmission mechanism)
+  3. *Portfolio & Sector Impact* (Asset class winners and losers)
+  4. *Beginner Analogy* (Practical conceptual metaphor)
 
-### 4. 🤖 Finance AI Tutor
-- Context-aware financial assistant answering queries about Indian markets, corporate actions, and taxation (STCG/LTCG).
-- Directly references and cites official regulatory frameworks from **SEBI** and **RBI**.
+### 4. 📈 Virtual Investment Portfolio Simulator
+- **Dual-Currency Virtual Balance:** Practice with ₹10,00,000 INR or $50,000 USD virtual demo capital.
+- **Full Order Execution Engine:** Execute Market Orders, Limit Orders, and Bracket Stop-Loss / Take-Profit orders.
+- **Margin & Product Modes:** Support for Intraday (MIS with 5x leverage) and Delivery (CNC).
+- **Advanced Portfolio Analytics:** Sharpe Ratio, Sortino Ratio, Maximum Drawdown (MDD), Beta, and Sector Allocation breakdowns.
 
-### 5. 📓 Psychological Trading Journal
-- Record emotional state (Confident, FOMO, Revenge Trading, Disciplined) for every executed order.
-- Track post-trade reviews, error analysis, and adherence to trading rules.
+### 5. 🧮 Precision Financial Calculators Suite
+- **SIP & Step-Up Calculator:** Monthly investing projections with annual step-up percentages and inflation adjustments.
+- **EMI & Prepayment Amortization:** Calculates monthly EMIs and quantifies the exact interest saved and tenure reduced through regular prepayments.
+- **Compound Interest Calculator:** Models customizable compounding frequencies (Daily, Monthly, Quarterly, Annually).
+- **Inflation & Rupee Purchasing Power:** Visualizes future cost escalation and purchasing power erosion.
+- **Fixed Deposit (FD) & Recurring Deposit (RD):** Quarterly compounding schedules with senior citizen bonus rate calculations.
+- **Bond Yield to Maturity (YTM) & Duration:** Calculates Macaulay Duration, Modified Duration, and interest rate sensitivity.
+- **Income Tax & Capital Gains Calculator:** Comprehensive comparison between Old vs. New Tax Regimes (FY 2024-25 / 2025-26) with updated equity STCG (20%) and LTCG (12.5%) post-Budget 2024.
 
-### 6. 🧪 Algorithmic Backtester
-- Test and optimize popular trading strategies (e.g., EMA Crossovers, Supertrend, Breakout) against historical Indian stock data.
-- Generates detailed trade logs, equity curves, and performance summaries.
+### 6. 🏠 Life & Business Simulators
+- **Rent vs. Buy 30-Year Model:** Compares buying property (EMI + maintenance) vs. renting and investing down payment in equity index funds.
+- **Debt Snowball vs. Avalanche Battle:** Compares interest saved and debt-free timelines between highest-rate-first (Avalanche) and smallest-balance-first (Snowball) strategies.
+- **FIRE Planner:** Calculates Lean FIRE, Standard FIRE (25x annual expenses), and Fat FIRE nest egg targets.
+- **Startup Cash Runway & Unit Economics:** Analyzes monthly burn rate, runway months, CAC vs. LTV health ratios, and break-even sales volume.
 
-### 7. 🎓 6 Structured Academy Tracks
-- Curated educational paths ranging from **Stock Market Fundamentals**, **Technical Analysis**, **F&O Derivatives**, to **Risk & Money Management**.
-- Interactive quizzes and milestone certifications.
+### 7. 🧪 Interactive Financial Decision Lab
+- Real-world scenario simulations ("The 2020 Black Swan Crash", "The ₹15L Windfall Prepayment", "The 18% Guaranteed Debenture Trap").
+- AI behavioral diagnostics evaluating cognitive biases (Loss Aversion, Recency Bias, Greed, Prudence) with 10-year wealth projection graphs.
 
-### 8. 🛡️ Quantitative Risk & Position Sizing Tools
-- 1% Risk Rule Calculator, Options Breakeven & Greeks visualizer, and Margin requirements estimator.
+### 8. 🗺️ Global Economic Connections Map
+- Interactive visual macroeconomic network demonstrating how interest rate shifts, crude oil disruptions, and forex flows ripple through bond yields, inflation, and equity markets.
 
-### 9. 🎮 Gamification & Community
-- Daily login streaks, XP rewards, level progression, and trading achievement badges.
+### 9. 🛡️ Scam Awareness Academy
+- Interactive fraud defense simulator covering modern financial scams: WhatsApp stock pumpers, fake Pre-IPO allotments, deepfake AI crypto trading bots, and digital arrest extortion.
+- Comprehensive Red Flag Detective checklists and official cybercrime reporting protocols (Dial 1930 / cybercrime.gov.in / SEBI SCORES).
 
-### 10. 🔐 Cloud Sync with Firebase
-- User authentication (Google Sign-In & Email/Password) powered by Firebase Auth.
-- Real-time cloud persistence for trades, portfolio balance, and journal notes via Firebase Firestore.
+### 10. 📜 Skill Passport & Verifiable Certificates
+- **Financial Intelligence Score (FIS):** Adaptive multi-domain competency assessment benchmarked on a 300 to 850 scale.
+- **Verified Digital Certificate:** Printable and exportable credential with unique verification ID and regulatory alignment seals.
+
+### 11. 🔐 User Authentication & Personalized Dashboards
+- Seamless Guest Exploration mode for instant, barrier-free access.
+- Cloud synchronization powered by Google Firebase Auth and Firestore for saving trades, journals, and scores across devices.
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Technology Stack
 
-- **Frontend Core:** Semantic HTML5, Modular Modern JavaScript (ES6+)
-- **Styling:** Custom Vanilla CSS (Design system with custom properties, glassmorphism, responsive grid layouts)
-- **Charts & Feeds:** TradingView Widget Library (`tv.js`) & simulated real-time market data feed
-- **Backend & Persistence:** Google Firebase Auth & Cloud Firestore
-- **Local Dev Server:** Built-in Perl HTTP Server (`server.pl`) or any static web server
-
----
-
-## 📁 Repository Structure
-
-```text
-wealthsignal/
-├── assets/                  # Logos, icons, and illustrations
-│   └── logo.jpg
-├── css/                     # Design system & styles
-│   ├── components.css       # Modals, charts, buttons, badges
-│   └── style.css            # Base styles, variables, typography, layout
-├── js/                      # Modular application architecture
-│   ├── app.js               # Main application router and view controller
-│   ├── components/          # Reusable UI components (TradingView, Auth, Checkout)
-│   ├── data/                # Market instruments, academy tracks, AI knowledge base
-│   └── services/            # Simulator engine, Portfolio, Journal, Auth, Backtester
-├── index.html               # Main single-page application entry point
-├── server.pl                # Lightweight local development server script
-└── README.md                # Project documentation
-```
+- **Frontend Core:** Semantic HTML5, Modular ES6+ JavaScript.
+- **Design System:** Custom Vanilla CSS with dark navy background (`#060913`, `#0b1120`, `#0f172a`), pale-blue / cyan accents (`#38bdf8`), and glassmorphism.
+- **Charting & Visualizations:** TradingView Technical Widget (`tv.js`), Chart.js 4.4, and high-performance HTML5 Canvas engines.
+- **Cloud Infrastructure:** Google Firebase Authentication & Cloud Firestore.
+- **Deployment:** Vercel (Optimized static hosting with clean URLs and security headers).
 
 ---
 
@@ -98,53 +108,33 @@ wealthsignal/
 
 No heavy build steps or `node_modules` required!
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/shan-ws/wealthsignal.git
-cd wealthsignal
-```
+1. **Clone the repository:**
+   ```bash
+   git clone git@github.com:shan-ws/wealthsignal.git
+   cd wealthsignal
+   ```
 
-### 2. Run locally
-You can use any static server of your choice:
+2. **Start a local development server:**
+   Using Python:
+   ```bash
+   python3 -m http.server 3000
+   ```
+   Or using Perl:
+   ```bash
+   perl server.pl
+   ```
 
-**Using Python:**
-```bash
-python3 -m http.server 8080
-```
-
-**Using the included Perl server:**
-```bash
-perl server.pl
-```
-
-**Using Node.js (`npx serve`):**
-```bash
-npx serve .
-```
-
-### 3. Open in Browser
-Navigate to `http://localhost:8080` in your web browser.
+3. **Open in your browser:**
+   ```text
+   http://localhost:3000
+   ```
 
 ---
 
-## 🌐 Deploying to GitHub Pages
+## 📜 Regulatory Disclaimer
 
-1. Navigate to **Settings** → **Pages** in this repository.
-2. Under **Build and deployment**:
-   - **Source:** Deploy from a branch
-   - **Branch:** `main`
-   - **Folder:** `/ (root)`
-3. Click **Save**. Your site will be deployed at `https://<username>.github.io/wealthsignal/`.
+*Wealth Signal is an educational and market simulation platform developed strictly for learning financial concepts. It does not provide personalized investment advice, guaranteed returns, or execute real-money trades. Simulated profits do not guarantee real-world success. Refer to official regulatory disclosures on [sebi.gov.in](https://www.sebi.gov.in), [rbi.org.in](https://www.rbi.org.in), and [sec.gov](https://www.sec.gov).*
 
 ---
 
-## ⚖️ Regulatory Disclaimer
-
-> **SEBI / RBI EDUCATIONAL NOTICE**  
-> Wealth Signal is strictly an educational and simulated paper-trading platform. It does not provide personalized investment advice, guaranteed returns, stock tips, or execute real-money transactions in Indian or global securities markets. Simulated demo profits do not represent or guarantee real-world trading performance. For official guidelines and circulars, visit [SEBI](https://www.sebi.gov.in) and [RBI](https://www.rbi.org.in).
-
----
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
+© 2026 Wealth Signal. Built with precision for financial learners worldwide.

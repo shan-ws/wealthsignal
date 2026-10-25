@@ -59,28 +59,73 @@
       </div>
     </div>
 
-    <!-- Desktop Navigation Links (Clean primary bar with 'More' dropdown for secondary tools) -->
+    <!-- Desktop Navigation Links -->
     <ul class="nav-links desktop-nav-links">
       <li><a class="nav-link active" data-route="home" onclick="window.ArthashalaApp.navigate('home')">Home</a></li>
       <li><a class="nav-link" data-route="markets" onclick="window.ArthashalaApp.navigate('markets')">Markets</a></li>
       <li><a class="nav-link" data-route="simulator" onclick="window.ArthashalaApp.navigate('simulator')">Simulator</a></li>
-      <li><a class="nav-link" data-route="portfolio" onclick="window.ArthashalaApp.navigate('portfolio')">Portfolio</a></li>
-      <li><a class="nav-link" data-route="education" onclick="window.ArthashalaApp.navigate('education')">Academy</a></li>
-      <li><a class="nav-link" data-route="finance-ai" onclick="window.ArthashalaApp.navigate('finance-ai')">Financial AI Tool</a></li>
+      <li><a class="nav-link" data-route="finance-ai" onclick="window.ArthashalaApp.navigate('finance-ai')">AI Tutor</a></li>
+      <li><a class="nav-link" data-route="calculators" onclick="window.ArthashalaApp.navigate('calculators')">Calculators</a></li>
+      <li><a class="nav-link" data-route="simulators" onclick="window.ArthashalaApp.navigate('simulators')">Simulators</a></li>
 
       <!-- Secondary Tools Dropdown -->
       <li class="nav-dropdown-wrapper">
         <button class="nav-dropdown-trigger" id="nav-dropdown-trigger-btn" onclick="window.ArthashalaApp.toggleNavMoreDropdown(event)">
-          <span>Tools & More</span>
+          <span>Intelligence & More</span>
           <span class="dropdown-chevron-icon">▾</span>
         </button>
         <div class="nav-dropdown-menu" id="nav-more-dropdown-menu">
-          <div class="dropdown-group-title">ADVANCED QUANTITATIVE</div>
+          <div class="dropdown-group-title">INTELLIGENCE & LABS</div>
+          <a class="nav-dropdown-item nav-link" data-route="decision-lab" onclick="window.ArthashalaApp.navigate('decision-lab')">
+            <span class="dropdown-item-icon">DL</span>
+            <div class="dropdown-item-info">
+              <span class="dropdown-item-name">Decision Lab</span>
+              <span class="dropdown-item-desc">What Would You Do? market scenarios</span>
+            </div>
+          </a>
+          <a class="nav-dropdown-item nav-link" data-route="macro-map" onclick="window.ArthashalaApp.navigate('macro-map')">
+            <span class="dropdown-item-icon">MM</span>
+            <div class="dropdown-item-info">
+              <span class="dropdown-item-name">Economic Ripple Map</span>
+              <span class="dropdown-item-desc">Global macro transmission network</span>
+            </div>
+          </a>
+          <a class="nav-dropdown-item nav-link" data-route="scam-academy" onclick="window.ArthashalaApp.navigate('scam-academy')">
+            <span class="dropdown-item-icon">SA</span>
+            <div class="dropdown-item-info">
+              <span class="dropdown-item-name">Scam Awareness</span>
+              <span class="dropdown-item-desc">Interactive fraud defense detector</span>
+            </div>
+          </a>
+          <a class="nav-dropdown-item nav-link" data-route="passport" onclick="window.ArthashalaApp.navigate('passport')">
+            <span class="dropdown-item-icon">CP</span>
+            <div class="dropdown-item-info">
+              <span class="dropdown-item-name">Skill Passport & Certificate</span>
+              <span class="dropdown-item-desc">Verifiable digital credential</span>
+            </div>
+          </a>
+
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-group-title">QUANTITATIVE & PORTFOLIO</div>
+          <a class="nav-dropdown-item nav-link" data-route="portfolio" onclick="window.ArthashalaApp.navigate('portfolio')">
+            <span class="dropdown-item-icon">PT</span>
+            <div class="dropdown-item-info">
+              <span class="dropdown-item-name">Portfolio Analytics</span>
+              <span class="dropdown-item-desc">Sharpe, Sortino, Drawdown & Sector</span>
+            </div>
+          </a>
+          <a class="nav-dropdown-item nav-link" data-route="education" onclick="window.ArthashalaApp.navigate('education')">
+            <span class="dropdown-item-icon">AC</span>
+            <div class="dropdown-item-info">
+              <span class="dropdown-item-name">Financial Academy</span>
+              <span class="dropdown-item-desc">Structured learning tracks</span>
+            </div>
+          </a>
           <a class="nav-dropdown-item nav-link" data-route="backtesting" onclick="window.ArthashalaApp.navigate('backtesting')">
             <span class="dropdown-item-icon">BT</span>
             <div class="dropdown-item-info">
               <span class="dropdown-item-name">Algorithmic Backtest</span>
-              <span class="dropdown-item-desc">Test EMA, RSI & Supertrend rules</span>
+              <span class="dropdown-item-desc">EMA Crossovers, RSI & Supertrend</span>
             </div>
           </a>
           <a class="nav-dropdown-item nav-link" data-route="risk-tools" onclick="window.ArthashalaApp.navigate('risk-tools')">
@@ -94,12 +139,12 @@
             <span class="dropdown-item-icon">JN</span>
             <div class="dropdown-item-info">
               <span class="dropdown-item-name">Trading Journal</span>
-              <span class="dropdown-item-desc">Psychology & trade performance log</span>
+              <span class="dropdown-item-desc">Psychology & discipline logs</span>
             </div>
           </a>
 
           <div class="dropdown-divider"></div>
-          <div class="dropdown-group-title">ACCOUNT & PLATFORM</div>
+          <div class="dropdown-group-title">ACCOUNT & SETTINGS</div>
           <a class="nav-dropdown-item nav-link" data-route="pricing" onclick="window.ArthashalaApp.navigate('pricing')">
             <span class="dropdown-item-icon">PRO</span>
             <div class="dropdown-item-info">
@@ -112,13 +157,6 @@
             <div class="dropdown-item-info">
               <span class="dropdown-item-name">Profile & Badges</span>
               <span class="dropdown-item-desc">Learning rank, XP & streak stats</span>
-            </div>
-          </a>
-          <a class="nav-dropdown-item nav-link" data-route="admin" onclick="window.ArthashalaApp.navigate('admin')">
-            <span class="dropdown-item-icon">ADM</span>
-            <div class="dropdown-item-info">
-              <span class="dropdown-item-name">Platform Admin</span>
-              <span class="dropdown-item-desc">Regulatory compliance log</span>
             </div>
           </a>
         </div>
@@ -224,26 +262,56 @@
         </div>
       </a>
 
-      <div class="drawer-section-heading">INTELLIGENCE & RESEARCH</div>
-      <a class="drawer-nav-link nav-link" data-route="education" onclick="window.ArthashalaApp.navigate('education'); window.ArthashalaApp.closeMobileDrawer();">
-        <span class="drawer-link-icon">ACD</span>
-        <div class="drawer-link-meta">
-          <span class="drawer-link-title">Financial Academy</span>
-          <span class="drawer-link-sub">6 structured tracks & certifications</span>
-        </div>
-      </a>
+      <div class="drawer-section-heading">INTELLIGENCE & AI</div>
       <a class="drawer-nav-link nav-link" data-route="finance-ai" onclick="window.ArthashalaApp.navigate('finance-ai'); window.ArthashalaApp.closeMobileDrawer();">
         <span class="drawer-link-icon">AI</span>
         <div class="drawer-link-meta">
-          <span class="drawer-link-title">Omni-Market Financial AI</span>
-          <span class="drawer-link-sub">Stocks, Options, Crypto, Forex, MCX & Bonds</span>
+          <span class="drawer-link-title">AI Finance Tutor</span>
+          <span class="drawer-link-sub">Beginner-to-institutional mentor & audio</span>
         </div>
       </a>
-      <a class="drawer-nav-link nav-link" data-route="journal" onclick="window.ArthashalaApp.navigate('journal'); window.ArthashalaApp.closeMobileDrawer();">
-        <span class="drawer-link-icon">JRN</span>
+      <a class="drawer-nav-link nav-link" data-route="decision-lab" onclick="window.ArthashalaApp.navigate('decision-lab'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">LAB</span>
         <div class="drawer-link-meta">
-          <span class="drawer-link-title">Trading Journal</span>
-          <span class="drawer-link-sub">Psychology & discipline logs</span>
+          <span class="drawer-link-title">Decision Lab</span>
+          <span class="drawer-link-sub">Real-world dilemmas with AI evaluation</span>
+        </div>
+      </a>
+      <a class="drawer-nav-link nav-link" data-route="macro-map" onclick="window.ArthashalaApp.navigate('macro-map'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">MAP</span>
+        <div class="drawer-link-meta">
+          <span class="drawer-link-title">Economic Ripple Map</span>
+          <span class="drawer-link-sub">Global macro transmission network</span>
+        </div>
+      </a>
+      <a class="drawer-nav-link nav-link" data-route="scam-academy" onclick="window.ArthashalaApp.navigate('scam-academy'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">SHD</span>
+        <div class="drawer-link-meta">
+          <span class="drawer-link-title">Scam Awareness Academy</span>
+          <span class="drawer-link-sub">Fraud defense & detective simulator</span>
+        </div>
+      </a>
+      <a class="drawer-nav-link nav-link" data-route="passport" onclick="window.ArthashalaApp.navigate('passport'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">PAS</span>
+        <div class="drawer-link-meta">
+          <span class="drawer-link-title">Skill Passport & Certificate</span>
+          <span class="drawer-link-sub">FIS score & verifiable credentials</span>
+        </div>
+      </a>
+
+      <div class="drawer-section-heading">CALCULATORS & SIMULATORS</div>
+      <a class="drawer-nav-link nav-link" data-route="calculators" onclick="window.ArthashalaApp.navigate('calculators'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">CAL</span>
+        <div class="drawer-link-meta">
+          <span class="drawer-link-title">Financial Calculators</span>
+          <span class="drawer-link-sub">SIP, EMI, Compound, Tax & Bond YTM</span>
+        </div>
+      </a>
+      <a class="drawer-nav-link nav-link" data-route="simulators" onclick="window.ArthashalaApp.navigate('simulators'); window.ArthashalaApp.closeMobileDrawer();">
+        <span class="drawer-link-icon">SIM</span>
+        <div class="drawer-link-meta">
+          <span class="drawer-link-title">Life & Business Simulators</span>
+          <span class="drawer-link-sub">Rent vs Buy, Snowball/Avalanche, FIRE</span>
         </div>
       </a>
 
@@ -319,9 +387,15 @@
 
   <!-- Main View Container for Routes -->
   <main class="app-container">
-    <section class="route-view" id="view-home"></section>
+    <section class="route-view active" id="view-home"></section>
     <section class="route-view" id="view-markets"></section>
     <section class="route-view" id="view-simulator"></section>
+    <section class="route-view" id="view-calculators"></section>
+    <section class="route-view" id="view-simulators"></section>
+    <section class="route-view" id="view-decision-lab"></section>
+    <section class="route-view" id="view-macro-map"></section>
+    <section class="route-view" id="view-scam-academy"></section>
+    <section class="route-view" id="view-passport"></section>
     <section class="route-view" id="view-portfolio"></section>
     <section class="route-view" id="view-journal"></section>
     <section class="route-view" id="view-backtesting"></section>
@@ -331,7 +405,7 @@
     <section class="route-view" id="view-pricing"></section>
     <section class="route-view" id="view-profile"></section>
     <section class="route-view" id="view-admin"></section>
-    <section class="route-view active" id="view-auth"></section>
+    <section class="route-view" id="view-auth"></section>
   </main>
 
   <!-- Platform Footer -->
@@ -355,18 +429,18 @@
         <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
           <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('simulator')" style="color: var(--text-secondary); text-decoration: none;">Pro Virtual Simulator</a></li>
           <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('markets')" style="color: var(--text-secondary); text-decoration: none;">Live Market Screener</a></li>
-          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('portfolio')" style="color: var(--text-secondary); text-decoration: none;">Sharpe Portfolio Analytics</a></li>
-          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('backtesting')" style="color: var(--text-secondary); text-decoration: none;">Algorithmic Backtester</a></li>
+          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('calculators')" style="color: var(--text-secondary); text-decoration: none;">Financial Calculators (SIP/EMI/FD/Tax)</a></li>
+          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('simulators')" style="color: var(--text-secondary); text-decoration: none;">Life & Business Simulators</a></li>
         </ul>
       </div>
 
       <div>
-        <strong style="color: #fff; font-size: 13px; display: block; margin-bottom: 12px;">Knowledge & Research</strong>
+        <strong style="color: #fff; font-size: 13px; display: block; margin-bottom: 12px;">Intelligence & Research</strong>
         <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
-          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('education')" style="color: var(--text-secondary); text-decoration: none;">6 Structured Academy Tracks</a></li>
-          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('finance-ai')" style="color: var(--text-secondary); text-decoration: none;">Omni-Market Financial AI (SEBI, RBI, SEC, CBOE, BIS, CME)</a></li>
-          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('risk-tools')" style="color: var(--text-secondary); text-decoration: none;">F&O & Position Sizing Tools</a></li>
-          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('journal')" style="color: var(--text-secondary); text-decoration: none;">Psychological Trading Journal</a></li>
+          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('decision-lab')" style="color: var(--text-secondary); text-decoration: none;">Financial Decision Lab</a></li>
+          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('macro-map')" style="color: var(--text-secondary); text-decoration: none;">Global Economic Ripple Map</a></li>
+          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('scam-academy')" style="color: var(--text-secondary); text-decoration: none;">Scam Awareness Academy</a></li>
+          <li><a href="javascript:void(0)" onclick="window.ArthashalaApp.navigate('finance-ai')" style="color: var(--text-secondary); text-decoration: none;">AI Finance Tutor (SEBI/RBI/SEC/BIS)</a></li>
         </ul>
       </div>
 
@@ -379,11 +453,12 @@
     </div>
 
     <div style="border-top: 1px solid var(--border-subtle); padding-top: 20px; text-align: center; color: var(--text-muted);">
-      © 2026 Wealth Signal. All rights reserved. Built with precision for Indian financial learners.
+      © 2026 Wealth Signal. All rights reserved. Built with precision for financial learners worldwide.
     </div>
   </footer>
 
-  <!-- Scripts: Data, Services, Components & App Controller -->
+  <!-- Scripts: Chart.js, TradingView, Data, Services, Components & App Controller -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="https://s3.tradingview.com/tv.js"></script>
   <script src="js/data/markets.js"></script>
   <script src="js/data/academy.js"></script>
@@ -395,6 +470,13 @@
   <script src="js/services/journal.js"></script>
   <script src="js/services/backtest.js"></script>
   <script src="js/services/ai_tutor.js"></script>
+  <script src="js/services/calculators.js"></script>
+  <script src="js/services/news_analysis.js"></script>
+  <script src="js/services/life_simulators.js"></script>
+  <script src="js/services/decision_lab.js"></script>
+  <script src="js/services/economic_map.js"></script>
+  <script src="js/services/scam_academy.js"></script>
+  <script src="js/services/education_upgrade.js"></script>
   <!-- Firebase SDK (v10 compat) -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
@@ -407,6 +489,7 @@
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script src="js/components/checkout.js"></script>
   <script src="js/components/auth_modal.js"></script>
+  <script src="js/components/intelligence_views.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
