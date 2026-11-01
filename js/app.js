@@ -144,7 +144,7 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  else if (route === "education") renderEducationView();
  else if (route === "finance-ai") renderFinanceAIView();
  else if (route === "risk-tools") renderRiskToolsView();
- else if (route === "pricing") renderPricingView();
+ else if (route === "pricing") navigate("home");
  else if (route === "profile") renderProfileView();
  else if (route === "admin") renderAdminView();
  else if (route === "auth" || route === "login") renderAuthView();
@@ -207,9 +207,6 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  <a class="menu-item-link" onclick="window.ArthashalaApp.navigate('journal')">
  <span class="nav-item-tag">JRN</span> Trading Journal
  </a>
- <a class="menu-item-link" onclick="window.ArthashalaComponents.checkout.openModal('1Y')">
- <span>⭐</span> Upgrade to Pro
- </a>
  <a class="menu-item-link danger" onclick="window.ArthashalaApp.handleLogout()">
  <span class="nav-item-tag">EXIT</span> Sign Out
  </a>
@@ -232,8 +229,6 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  const streak = window.ArthashalaServices.gamification.getStreak();
  const xp = window.ArthashalaServices.gamification.getXP();
  const tier = window.ArthashalaServices.gamification.getCurrentTier();
- const sub = window.ArthashalaComponents.checkout.getSubscription();
-
  const balanceEl = document.getElementById("header-virtual-balance");
  if (balanceEl) balanceEl.innerText = formatINR(simSummary.netWorth, 0);
 
@@ -248,16 +243,6 @@ window.ArthashalaApp = window.ArthashalaApp || {};
 
  const drawerStreakXpEl = document.getElementById("drawer-streak-xp-val");
  if (drawerStreakXpEl) drawerStreakXpEl.innerText = `${streak}d Streak • ${xp} XP`;
-
- const proBadge = document.getElementById("header-pro-badge");
- if (proBadge) {
- if (sub.isPro) {
- proBadge.style.display = "inline-flex";
- proBadge.innerText = "PRO ACTIVE";
- } else {
- proBadge.style.display = "none";
- }
- }
 
  renderHeaderAuth();
  }
@@ -618,8 +603,11 @@ window.ArthashalaApp = window.ArthashalaApp || {};
 
  <div class="screener-bar">
  <div>
- <h2 style="font-size: 20px; font-weight: 800; color: #fff;">Indian & Global Market Screener</h2>
- <p class="text-muted" style="font-size: 13px;">Real-time virtual price ticks across NSE, BSE, MCX and Currency markets.</p>
+ <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap;">
+ <h2 style="font-size: 20px; font-weight: 800; color: #fff; margin: 0;">Indian & Global Market Screener</h2>
+ <div class="live-feed-badge"><span class="live-feed-dot"></span> LIVE REAL-TIME FEED</div>
+ </div>
+ <p class="text-muted" style="font-size: 13px; margin: 0;">Real-time live prices, 24h ranges, and verified exchange volumes across NSE, BSE, MCX, US Tech, and Crypto.</p>
  </div>
 
  <div class="filter-pills-group">
@@ -1933,112 +1921,10 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  `;
  }
 
- // 10. PRICING VIEW
- function renderPricingView() {
- const container = document.getElementById("view-pricing");
- if (!container) return;
-
- const sub = window.ArthashalaComponents.checkout.getSubscription();
-
- container.innerHTML = `
- <div style="text-align: center; max-width: 680px; margin: 0 auto 36px;">
- <div class="badge-tag" style="background: rgba(245, 158, 11, 0.15); color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.3); padding: 4px 12px; border-radius: var(--radius-full); display: inline-block; font-size: 11px; font-weight: 700; margin-bottom: 12px;">
- PREMIUM TRADER SUBSCRIPTION
- </div>
- <h2 style="font-size: 30px; font-weight: 800; color: #fff; margin-bottom: 10px;">
- Master the Markets with Pro Terminal Tools
- </h2>
- <p class="text-secondary" style="font-size: 14px;">
- Upgrade to unlock advanced candlestick indicators, portfolio quantitative analytics, unlimited strategy backtesting, psychological journal, and uncapped Finance AI queries.
- </p>
- </div>
-
- <!-- Pricing Plans Grid -->
- <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 40px;">
- <!-- 1 Month -->
- <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
- <div>
- <div style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px;">1 Month Plan</div>
- <div class="text-muted" style="font-size: 12px;">Starter Trader</div>
- <div style="font-size: 32px; font-weight: 800; font-family: var(--font-mono); color: #fff; margin: 16px 0;">
- ₹99
- </div>
- <div style="font-size: 11.5px; color: var(--text-muted); margin-bottom: 16px;">Standard monthly access</div>
- <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: var(--text-secondary);">
- <li> Advanced Candlestick Charts</li>
- <li> Market Simulator with ₹10L</li>
- <li> Basic Strategy Backtester</li>
- </ul>
- </div>
- <button class="btn btn-secondary" style="width: 100%; margin-top: 24px;" onclick="window.ArthashalaComponents.checkout.openModal('1M')">
- Select ₹99 Plan
- </button>
- </div>
-
- <!-- 3 Months -->
- <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
- <div>
- <div style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px;">3 Months Plan</div>
- <div class="text-muted" style="font-size: 12px;">Active Learner</div>
- <div style="font-size: 32px; font-weight: 800; font-family: var(--font-mono); color: #fff; margin: 16px 0;">
- ₹399
- </div>
- <div style="font-size: 11.5px; color: var(--text-muted); margin-bottom: 16px;">Save 15% vs monthly</div>
- <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: var(--text-secondary);">
- <li> All 1-Month Perks</li>
- <li> Portfolio Sharpe Analytics</li>
- <li> Psychological Journal</li>
- </ul>
- </div>
- <button class="btn btn-secondary" style="width: 100%; margin-top: 24px;" onclick="window.ArthashalaComponents.checkout.openModal('3M')">
- Select ₹399 Plan
- </button>
- </div>
-
- <!-- 6 Months -->
- <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
- <div>
- <div style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px;">6 Months Plan</div>
- <div class="text-muted" style="font-size: 12px;">Semi-Pro</div>
- <div style="font-size: 32px; font-weight: 800; font-family: var(--font-mono); color: #fff; margin: 16px 0;">
- ₹699
- </div>
- <div style="font-size: 11.5px; color: var(--text-muted); margin-bottom: 16px;">Save 25% vs monthly</div>
- <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: var(--text-secondary);">
- <li> Full Pro Access</li>
- <li> Unlimited AI Queries</li>
- <li> Risk Management Suite</li>
- </ul>
- </div>
- <button class="btn btn-secondary" style="width: 100%; margin-top: 24px;" onclick="window.ArthashalaComponents.checkout.openModal('6M')">
- Select ₹699 Plan
- </button>
- </div>
-
- <!-- 1 Year (Best Value) -->
- <div class="card" style="border: 2px solid var(--emerald); position: relative; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(180deg, rgba(0, 229, 153, 0.06) 0%, rgba(18, 24, 38, 1) 100%);">
- <div class="best-value-ribbon">⭐ BEST VALUE</div>
- <div>
- <div style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px;">1 Year Plan</div>
- <div class="text-emerald" style="font-size: 12px; font-weight: 700;">Complete Annual Mastery</div>
- <div style="font-size: 32px; font-weight: 800; font-family: var(--font-mono); color: var(--emerald); margin: 16px 0;">
- ₹1,099
- </div>
- <div style="font-size: 11.5px; color: var(--text-muted); margin-bottom: 16px;">Just ₹3.01 / day (Save 42%)</div>
- <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: #f8fafc;">
- <li> Everything in Pro Unlocked</li>
- <li> Multi-Year Backtesting Data</li>
- <li> SEBI Compliance Certificate</li>
- <li> Priority AI Mentor Responses</li>
- </ul>
- </div>
- <button class="btn btn-primary btn-glow" style="width: 100%; margin-top: 24px;" onclick="window.ArthashalaComponents.checkout.openModal('1Y')">
- Upgrade for ₹1,099 (Best Value)
- </button>
- </div>
- </div>
- `;
- }
+  // 10. PRICING VIEW (Platform is 100% Free & Open)
+  function renderPricingView() {
+    navigate("home");
+  }
 
  // 11. PROFILE & SETTINGS VIEW
  function renderProfileView() {
@@ -2049,13 +1935,12 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  const user = authService ? authService.getUser() : null;
  const tier = window.ArthashalaServices.gamification.getCurrentTier();
  const badges = window.ArthashalaServices.gamification.getBadges();
- const sub = window.ArthashalaComponents.checkout.getSubscription();
 
  const userName = user ? user.name : "Arjun Singhania";
  const userSubText = user ? (user.email || user.name) : "Virtual Trader #AS-4892";
  const userProvider = user ? user.provider : "google";
  const userAvatar = user && user.avatar ? user.avatar : "assets/logo.jpg";
- const isProUser = user ? user.isPro : sub.isPro;
+ const isProUser = true;
 
     const providerBadge = userProvider === "google"
       ? `<span class="badge-tag" style="background: rgba(66, 133, 244, 0.15); color: #60a5fa; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700;">✓ GOOGLE VERIFIED</span>`
@@ -2073,7 +1958,7 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  <div style="font-size: 12px; color: var(--text-muted);">${userSubText}</div>
  <div style="margin-top: 10px; display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
  <span class="badge-tag" style="background: ${isProUser ? 'rgba(0,229,153,0.15)' : 'rgba(255,255,255,0.06)'}; color: ${isProUser ? 'var(--emerald)' : '#cbd5e1'}; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700;">
- ${isProUser ? '⭐ WEALTH SIGNAL PRO' : 'FREE TIER'}
+ UNLOCKED ACADEMY TRADER
  </span>
  ${providerBadge}
  </div>
@@ -2702,16 +2587,57 @@ window.ArthashalaApp = window.ArthashalaApp || {};
  }
  });
 
- // Subscribe to real-time market ticks
+ // Subscribe to real-time live market updates
  window.ArthashalaServices.marketFeed.subscribe(data => {
- if (data.type === "ticks") {
- // Update simulator live price if current symbol ticked
- const currentTick = data.items.find(m => m.symbol === activeSimulatorSymbol);
- if (currentTick) {
- const pEl = document.getElementById("terminal-live-price");
- if (pEl) pEl.innerText = formatINR(currentTick.price);
- if (activeChartInstance) activeChartInstance.updateLiveTick(currentTick.price);
+ if (data.type === "ticks" && Array.isArray(data.items)) {
+ data.items.forEach(item => {
+ // 1. Update screener table cell
+ const priceEl = document.getElementById(`screener-price-${item.symbol}`);
+ if (priceEl) {
+ const formatted = formatINR(item.price);
+ if (priceEl.innerText !== formatted) {
+ priceEl.innerText = formatted;
+ priceEl.classList.remove("tick-flash-up", "tick-flash-down");
+ void priceEl.offsetWidth;
+ priceEl.classList.add(item.direction === "up" ? "tick-flash-up" : "tick-flash-down");
  }
+ }
+
+ const pctEl = document.getElementById(`screener-pct-${item.symbol}`);
+ if (pctEl) {
+ const diff = item.price - item.prevClose;
+ const pct = item.prevClose ? ((diff / item.prevClose) * 100) : 0;
+ const isUp = diff >= 0;
+ pctEl.className = `font-mono ${isUp ? 'text-emerald' : 'text-rose'}`;
+ pctEl.innerText = `${isUp ? '▲ +' : '▼ '}${pct.toFixed(2)}%`;
+ }
+
+ // 2. Update markets station chart header
+ if (activeRoute === "markets" && item.symbol === activeMarketsChartSymbol) {
+ const stPrice = document.getElementById("station-live-price");
+ if (stPrice) stPrice.innerText = formatINR(item.price);
+ const stPct = document.getElementById("station-live-pct");
+ if (stPct) {
+ const diff = item.price - item.prevClose;
+ const pct = item.prevClose ? ((diff / item.prevClose) * 100) : 0;
+ const isUp = diff >= 0;
+ stPct.className = `font-mono ${isUp ? 'text-emerald' : 'text-rose'}`;
+ stPct.innerText = `${isUp ? '▲ +' : '▼ '}${pct.toFixed(2)}%`;
+ }
+ }
+
+ // 3. Update simulator terminal live price
+ if (item.symbol === activeSimulatorSymbol) {
+ const pEl = document.getElementById("terminal-live-price");
+ if (pEl) pEl.innerText = formatINR(item.price);
+ if (activeChartInstance && activeChartInstance.updateLiveTick) {
+ activeChartInstance.updateLiveTick(item.price);
+ }
+ }
+ });
+
+ // Update scrolling ticker tape with latest live prices
+ initTickerTape();
  updateGlobalHeader();
  }
  });

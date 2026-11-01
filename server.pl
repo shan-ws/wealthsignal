@@ -48,6 +48,27 @@ while (my $client = $server->accept()) {
         $path =~ s|^/||;
         $path =~ s|\.\.||g;
 
+        if ($path eq 'api/market-data' || $path eq 'api/market-data.json') {
+            my $json_file = "$root/api/market-data.json";
+            # Update cache in background if older than 8s
+            if (! -f $json_file || (time() - (stat($json_file))[9] > 8)) {
+                system("python3 \"$root/api/fetch_live.py\" >/dev/null 2>&1 &");
+            }
+            if (-f $json_file && open my $jfh, '<:raw', $json_file) {
+                my $jcontent = do { local $/; <$jfh> };
+                close $jfh;
+                my $jlen = length($jcontent);
+                print $client "HTTP/1.1 200 OK\r\n";
+                print $client "Content-Type: application/json; charset=UTF-8\r\n";
+                print $client "Access-Control-Allow-Origin: *\r\n";
+                print $client "Content-Length: $jlen\r\n";
+                print $client "Connection: close\r\n\r\n";
+                print $client $jcontent;
+                close $client;
+                next;
+            }
+        }
+
         my $file_path = "$root/$path";
         if (-f $file_path) {
             my ($ext) = $file_path =~ /\.([a-zA-Z0-9]+)$/;
